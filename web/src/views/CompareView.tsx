@@ -58,7 +58,7 @@ export function CompareView({ options, onSelect }: CompareViewProps) {
         </p>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-slate-700">
+      <div className="hidden overflow-x-auto rounded-xl border border-slate-700 md:block">
         <table className="w-full min-w-[960px] text-left text-xs">
           <thead>
             <tr className="border-b border-slate-700 bg-slate-900/80 text-slate-500">
@@ -129,47 +129,77 @@ export function CompareView({ options, onSelect }: CompareViewProps) {
         </table>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        {sorted.map((analysis) => (
-          <div
-            key={analysis.option.id}
-            className="rounded-lg border border-slate-700 bg-slate-900/40 p-4"
-          >
-            <div className="flex items-start justify-between gap-2">
-              <h3 className="font-semibold text-slate-100">{analysis.option.name}</h3>
-              <span className="text-sm text-amber-300">
-                {formatCurrency(analysis.budget.total, analysis.budget.currency)}
-              </span>
-            </div>
+      <div className="grid gap-4 md:grid-cols-2">
+        {sorted.map((analysis) => {
+          const { option, route, budget } = analysis
+          return (
+            <div
+              key={analysis.option.id}
+              className="rounded-lg border border-slate-700 bg-slate-900/40 p-4"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div>
+                  <h3 className="font-semibold text-slate-100">
+                    {option.name}
+                    {option.recommended && (
+                      <span className="ml-1.5 rounded bg-amber-500/20 px-1 py-0.5 text-[9px] uppercase text-amber-300">
+                        Pick
+                      </span>
+                    )}
+                  </h3>
+                  <p className="mt-0.5 text-[11px] text-slate-500">{option.recommendedFor}</p>
+                </div>
+                <span className="shrink-0 text-sm text-amber-300">
+                  {formatCurrency(budget.total, budget.currency)}
+                </span>
+              </div>
 
-            <div className="mt-3 grid grid-cols-2 gap-3 text-[11px]">
-              <div>
-                <p className="mb-1 font-medium uppercase tracking-wide text-slate-500">
-                  Days per city
-                </p>
-                <ul className="space-y-0.5 text-slate-300">
-                  {analysis.daysPerCity.map(({ city, days }) => (
-                    <li key={city}>
-                      {city}: {days} day{days === 1 ? '' : 's'}
-                    </li>
-                  ))}
-                </ul>
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-slate-400">
+                <span>{option.gameCount} games</span>
+                <span>Score {option.totalInterestScore.toFixed(2)}</span>
+                <span>{formatMiles(route.totalDistanceMiles)}</span>
+                <span>
+                  {option.startDate.slice(5)} → {option.endDate.slice(5)}
+                </span>
               </div>
-              <div>
-                <p className="mb-1 font-medium uppercase tracking-wide text-slate-500">
-                  Games per team
-                </p>
-                <ul className="space-y-0.5 text-slate-300">
-                  {analysis.gamesPerTeam.map(({ tricode, name, count }) => (
-                    <li key={tricode}>
-                      {tricode} ({name}): {count}
-                    </li>
-                  ))}
-                </ul>
+
+              <div className="mt-3 grid grid-cols-2 gap-3 text-[11px]">
+                <div>
+                  <p className="mb-1 font-medium uppercase tracking-wide text-slate-500">
+                    Days per city
+                  </p>
+                  <ul className="space-y-0.5 text-slate-300">
+                    {analysis.daysPerCity.map(({ city, days }) => (
+                      <li key={city}>
+                        {city}: {days} day{days === 1 ? '' : 's'}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="mb-1 font-medium uppercase tracking-wide text-slate-500">
+                    Games per team
+                  </p>
+                  <ul className="space-y-0.5 text-slate-300">
+                    {analysis.gamesPerTeam.map(({ tricode, name, count }) => (
+                      <li key={tricode}>
+                        {tricode} ({name}): {count}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
+
+              <button
+                type="button"
+                onClick={() => onSelect(option.id)}
+                className="mt-4 min-h-[44px] w-full rounded-md border border-amber-500/40 bg-amber-500/10 px-3 py-2.5 text-sm font-medium text-amber-200 hover:bg-amber-500/20"
+              >
+                Open itinerary
+              </button>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )

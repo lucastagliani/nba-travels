@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import itineraryData from '@season/itinerary-options.json'
+import { MobileBottomNav } from './components/MobileBottomNav'
 import { readUrlState } from './lib/print'
 import type { ItineraryData } from './types'
 import { CompareView } from './views/CompareView'
@@ -55,18 +56,27 @@ export default function App() {
     setActiveDay(null)
   }, [])
 
+  const goDetail = useCallback(() => {
+    setView('detail')
+  }, [])
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
-      <header className="border-b border-slate-800 px-6 py-5">
+      <header
+        className="border-b border-slate-800 px-4 py-4 md:px-6 md:py-5"
+        style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}
+      >
         <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">NBA Travels — Route Planner</h1>
+            <h1 className="text-xl font-bold tracking-tight md:text-2xl">
+              NBA Travels — Route Planner
+            </h1>
             <p className="mt-1 text-sm text-slate-400">
               Compare itineraries · calendar · budget · printable export
             </p>
           </div>
 
-          <nav className="flex rounded-lg border border-slate-700 p-0.5 text-sm">
+          <nav className="hidden rounded-lg border border-slate-700 p-0.5 text-sm md:flex">
             <button
               type="button"
               onClick={goCompare}
@@ -76,7 +86,7 @@ export default function App() {
             </button>
             <button
               type="button"
-              onClick={() => setView('detail')}
+              onClick={goDetail}
               className={`rounded-md px-3 py-1.5 ${view === 'detail' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-slate-200'}`}
             >
               Trip detail
@@ -85,7 +95,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl p-6">
+      <main className="mx-auto max-w-7xl px-4 py-4 pb-24 md:p-6 md:pb-6">
         {view === 'compare' ? (
           <CompareView options={data.options} onSelect={openDetail} />
         ) : (
@@ -99,6 +109,8 @@ export default function App() {
           />
         )}
       </main>
+
+      <MobileBottomNav view={view} onCompare={goCompare} onDetail={goDetail} />
     </div>
   )
 }

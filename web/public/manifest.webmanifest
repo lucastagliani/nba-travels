@@ -1,0 +1,19 @@
+{
+  "name": "NBA Travels",
+  "short_name": "NBA Travels",
+  "description": "Plan your NBA road trip — compare itineraries, games, and routes",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

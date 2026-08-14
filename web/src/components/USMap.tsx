@@ -210,7 +210,7 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
         <button
           type="button"
           onClick={zoomIn}
-          className="flex h-8 w-8 items-center justify-center rounded-md border border-slate-600 bg-slate-950/90 text-lg text-slate-100 hover:bg-slate-800"
+          className="flex h-11 w-11 items-center justify-center rounded-md border border-slate-600 bg-slate-950/90 text-lg text-slate-100 hover:bg-slate-800 md:h-8 md:w-8"
           aria-label="Zoom in"
         >
           +
@@ -218,7 +218,7 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
         <button
           type="button"
           onClick={zoomOut}
-          className="flex h-8 w-8 items-center justify-center rounded-md border border-slate-600 bg-slate-950/90 text-lg text-slate-100 hover:bg-slate-800"
+          className="flex h-11 w-11 items-center justify-center rounded-md border border-slate-600 bg-slate-950/90 text-lg text-slate-100 hover:bg-slate-800 md:h-8 md:w-8"
           aria-label="Zoom out"
         >
           −
@@ -226,14 +226,14 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
         <button
           type="button"
           onClick={fitRoute}
-          className="rounded-md border border-slate-600 bg-slate-950/90 px-2 py-1 text-[10px] font-medium text-slate-300 hover:bg-slate-800"
+          className="min-h-[44px] rounded-md border border-slate-600 bg-slate-950/90 px-3 py-2 text-[11px] font-medium text-slate-300 hover:bg-slate-800 md:min-h-0 md:px-2 md:py-1 md:text-[10px]"
         >
           Fit route
         </button>
         <button
           type="button"
           onClick={resetZoom}
-          className="rounded-md border border-slate-600 bg-slate-950/90 px-2 py-1 text-[10px] font-medium text-slate-300 hover:bg-slate-800"
+          className="min-h-[44px] rounded-md border border-slate-600 bg-slate-950/90 px-3 py-2 text-[11px] font-medium text-slate-300 hover:bg-slate-800 md:min-h-0 md:px-2 md:py-1 md:text-[10px]"
         >
           Reset
         </button>
