@@ -1,0 +1,62 @@
+{
+  "New York": {
+    "lat": 40.7505,
+    "lng": -73.9934,
+    "arena": "Madison Square Garden",
+    "state": "NY"
+  },
+  "Philadelphia": {
+    "lat": 39.9012,
+    "lng": -75.172,
+    "arena": "Wells Fargo Center",
+    "state": "PA"
+  },
+  "Miami": {
+    "lat": 25.7814,
+    "lng": -80.187,
+    "arena": "Kaseya Center",
+    "state": "FL"
+  },
+  "Washington": {
+    "lat": 38.8981,
+    "lng": -77.0209,
+    "arena": "Capital One Arena",
+    "state": "DC"
+  },
+  "Orlando": {
+    "lat": 28.5392,
+    "lng": -81.3839,
+    "arena": "Kia Center",
+    "state": "FL"
+  },
+  "Boston": {
+    "lat": 42.3662,
+    "lng": -71.0621,
+    "arena": "TD Garden",
+    "state": "MA"
+  },
+  "Cleveland": {
+    "lat": 41.4965,
+    "lng": -81.6882,
+    "arena": "Rocket Mortgage FieldHouse",
+    "state": "OH"
+  },
+  "Chicago": {
+    "lat": 41.8807,
+    "lng": -87.6742,
+    "arena": "United Center",
+    "state": "IL"
+  },
+  "Toronto": {
+    "lat": 43.6435,
+    "lng": -79.3791,
+    "arena": "Scotiabank Arena",
+    "state": "ON"
+  },
+  "Atlanta": {
+    "lat": 33.7573,
+    "lng": -84.3963,
+    "arena": "State Farm Arena",
+    "state": "GA"
+  }
+}
