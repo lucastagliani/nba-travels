@@ -1,0 +1,793 @@
+{
+  "description": "Suggested 12-day NBA trip itineraries based on scored schedule, team tiers, and city tiers.",
+  "constraints": {
+    "maxDays": 12,
+    "sameDayTravelAndGame": true,
+    "focus": "East coast; deprioritize already-visited west cities (LA, Vegas, Sacramento, SF, Dallas)"
+  },
+  "travelAssumptions": {
+    "New York-Philadelphia": { "hours": 1.5, "mode": "train" },
+    "Philadelphia-New York": { "hours": 1.5, "mode": "train" },
+    "Philadelphia-Washington": { "hours": 2.5, "mode": "train" },
+    "Washington-Philadelphia": { "hours": 2.5, "mode": "train" },
+    "Washington-New York": { "hours": 3.5, "mode": "train" },
+    "New York-Washington": { "hours": 3.5, "mode": "train" },
+    "New York-Miami": { "hours": 3.0, "mode": "flight" },
+    "Miami-New York": { "hours": 3.0, "mode": "flight" },
+    "Miami-Philadelphia": { "hours": 2.75, "mode": "flight" },
+    "Philadelphia-Miami": { "hours": 2.75, "mode": "flight" },
+    "New York-Orlando": { "hours": 2.5, "mode": "flight" },
+    "Orlando-Miami": { "hours": 3.5, "mode": "drive" },
+    "Philadelphia-Boston": { "hours": 5.0, "mode": "train" }
+  },
+  "options": [
+    {
+      "id": "opening-tip-off",
+      "name": "Opening Tip-Off",
+      "recommendedFor": "Season openers, NYC + Philly + Miami, no winter travel",
+      "startDate": "2026-10-19",
+      "endDate": "2026-10-30",
+      "cities": ["New York", "Philadelphia", "Miami"],
+      "gameCount": 6,
+      "totalInterestScore": 22.58,
+      "averageInterestScore": 3.76,
+      "marqueeGames": ["2026-10-20 PHI@NYK"],
+      "days": [
+        {
+          "day": 1,
+          "date": "2026-10-19",
+          "weekday": "Sun",
+          "location": "New York",
+          "travel": { "description": "Fly in → New York" },
+          "game": null
+        },
+        {
+          "day": 2,
+          "date": "2026-10-20",
+          "weekday": "Mon",
+          "location": "New York",
+          "travel": null,
+          "game": {
+            "matchup": "PHI @ NYK",
+            "timeLocal": "19:00",
+            "arenaCity": "New York",
+            "interestScore": 4.59,
+            "marquee": true
+          }
+        },
+        {
+          "day": 3,
+          "date": "2026-10-21",
+          "weekday": "Tue",
+          "location": "New York",
+          "travel": null,
+          "game": null,
+          "notes": "Explore NYC / rest day"
+        },
+        {
+          "day": 4,
+          "date": "2026-10-22",
+          "weekday": "Wed",
+          "location": "Philadelphia",
+          "travel": { "from": "New York", "to": "Philadelphia", "hours": 1.5, "mode": "train" },
+          "game": {
+            "matchup": "CLE @ PHI",
+            "timeLocal": "19:00",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.5
+          }
+        },
+        {
+          "day": 5,
+          "date": "2026-10-23",
+          "weekday": "Thu",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null,
+          "notes": "Explore Philadelphia"
+        },
+        {
+          "day": 6,
+          "date": "2026-10-24",
+          "weekday": "Fri",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": {
+            "matchup": "MIL @ PHI",
+            "timeLocal": "19:30",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.36
+          }
+        },
+        {
+          "day": 7,
+          "date": "2026-10-25",
+          "weekday": "Sat",
+          "location": "New York",
+          "travel": { "from": "Philadelphia", "to": "New York", "hours": 1.5, "mode": "train" },
+          "game": {
+            "matchup": "ORL @ NYK",
+            "timeLocal": "19:00",
+            "arenaCity": "New York",
+            "interestScore": 3.52
+          }
+        },
+        {
+          "day": 8,
+          "date": "2026-10-26",
+          "weekday": "Sun",
+          "location": "Miami",
+          "travel": { "from": "New York", "to": "Miami", "hours": 3.0, "mode": "flight", "notes": "Morning flight" },
+          "game": {
+            "matchup": "DAL @ MIA",
+            "timeLocal": "19:30",
+            "arenaCity": "Miami",
+            "interestScore": 3.96
+          }
+        },
+        {
+          "day": 9,
+          "date": "2026-10-27",
+          "weekday": "Mon",
+          "location": "Miami",
+          "travel": null,
+          "game": null,
+          "notes": "Rest / beach"
+        },
+        {
+          "day": 10,
+          "date": "2026-10-28",
+          "weekday": "Tue",
+          "location": "Miami",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 11,
+          "date": "2026-10-29",
+          "weekday": "Wed",
+          "location": "Miami",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 12,
+          "date": "2026-10-30",
+          "weekday": "Thu",
+          "location": "Miami",
+          "travel": { "description": "Fly home next day" },
+          "game": {
+            "matchup": "IND @ MIA",
+            "timeLocal": "20:00",
+            "arenaCity": "Miami",
+            "interestScore": 3.65
+          }
+        }
+      ]
+    },
+    {
+      "id": "super-saturday-nyc",
+      "name": "Super Saturday — Lakers at MSG",
+      "parentOption": "super-saturday",
+      "recommendedFor": "Marquee Jan 30 weekend; priority is Lakers at Madison Square Garden",
+      "startDate": "2027-01-28",
+      "endDate": "2027-02-08",
+      "cities": ["New York", "Philadelphia", "Miami"],
+      "gameCount": 5,
+      "totalInterestScore": 18.49,
+      "averageInterestScore": 3.7,
+      "marqueeGames": ["2027-01-30 LAL@NYK"],
+      "conflictNote": "Jan 30 also has PHI@MIA (12:30 pm Miami) — this branch picks LAL@NYK (8:30 pm NYC)",
+      "days": [
+        {
+          "day": 1,
+          "date": "2027-01-28",
+          "weekday": "Wed",
+          "location": "New York",
+          "travel": { "description": "Fly in → New York" },
+          "game": {
+            "matchup": "ATL @ NYK",
+            "timeLocal": "19:00",
+            "arenaCity": "New York",
+            "interestScore": 3.52
+          }
+        },
+        {
+          "day": 2,
+          "date": "2027-01-29",
+          "weekday": "Thu",
+          "location": "New York",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 3,
+          "date": "2027-01-30",
+          "weekday": "Fri",
+          "location": "New York",
+          "travel": null,
+          "game": {
+            "matchup": "LAL @ NYK",
+            "timeLocal": "20:30",
+            "arenaCity": "New York",
+            "interestScore": 4.59,
+            "marquee": true
+          }
+        },
+        {
+          "day": 4,
+          "date": "2027-01-31",
+          "weekday": "Sat",
+          "location": "Philadelphia",
+          "travel": { "from": "New York", "to": "Philadelphia", "hours": 1.5, "mode": "train" },
+          "game": null
+        },
+        {
+          "day": 5,
+          "date": "2027-02-01",
+          "weekday": "Sun",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": {
+            "matchup": "NOP @ PHI",
+            "timeLocal": "19:00",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.36
+          }
+        },
+        {
+          "day": 6,
+          "date": "2027-02-02",
+          "weekday": "Mon",
+          "location": "Miami",
+          "travel": { "from": "Philadelphia", "to": "Miami", "hours": 2.75, "mode": "flight" },
+          "game": null
+        },
+        {
+          "day": 7,
+          "date": "2027-02-03",
+          "weekday": "Tue",
+          "location": "Miami",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 8,
+          "date": "2027-02-04",
+          "weekday": "Wed",
+          "location": "Miami",
+          "travel": null,
+          "game": {
+            "matchup": "MIL @ MIA",
+            "timeLocal": "19:30",
+            "arenaCity": "Miami",
+            "interestScore": 3.52
+          }
+        },
+        {
+          "day": 9,
+          "date": "2027-02-05",
+          "weekday": "Thu",
+          "location": "Philadelphia",
+          "travel": { "from": "Miami", "to": "Philadelphia", "hours": 2.75, "mode": "flight" },
+          "game": null
+        },
+        {
+          "day": 10,
+          "date": "2027-02-06",
+          "weekday": "Fri",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 11,
+          "date": "2027-02-07",
+          "weekday": "Sat",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": {
+            "matchup": "BOS @ PHI",
+            "timeLocal": "19:00",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.5
+          }
+        },
+        {
+          "day": 12,
+          "date": "2027-02-08",
+          "weekday": "Mon",
+          "location": "Philadelphia",
+          "travel": { "description": "Fly home" },
+          "game": null
+        }
+      ]
+    },
+    {
+      "id": "super-saturday-miami",
+      "name": "Super Saturday — 76ers in Miami",
+      "parentOption": "super-saturday",
+      "recommendedFor": "Marquee Jan 30 weekend; priority is 76ers in Miami",
+      "startDate": "2027-01-28",
+      "endDate": "2027-02-08",
+      "cities": ["Miami", "Philadelphia"],
+      "gameCount": 5,
+      "totalInterestScore": 18.47,
+      "averageInterestScore": 3.69,
+      "marqueeGames": ["2027-01-30 PHI@MIA"],
+      "conflictNote": "Jan 30 also has LAL@NYK (8:30 pm NYC) — this branch picks PHI@MIA (12:30 pm Miami)",
+      "days": [
+        {
+          "day": 1,
+          "date": "2027-01-28",
+          "weekday": "Wed",
+          "location": "Miami",
+          "travel": { "description": "Fly in → Miami" },
+          "game": null
+        },
+        {
+          "day": 2,
+          "date": "2027-01-29",
+          "weekday": "Thu",
+          "location": "Miami",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 3,
+          "date": "2027-01-30",
+          "weekday": "Fri",
+          "location": "Miami",
+          "travel": null,
+          "game": {
+            "matchup": "PHI @ MIA",
+            "timeLocal": "12:30",
+            "arenaCity": "Miami",
+            "interestScore": 4.59,
+            "marquee": true
+          }
+        },
+        {
+          "day": 4,
+          "date": "2027-01-31",
+          "weekday": "Sat",
+          "location": "Miami",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 5,
+          "date": "2027-02-01",
+          "weekday": "Sun",
+          "location": "Philadelphia",
+          "travel": { "from": "Miami", "to": "Philadelphia", "hours": 2.75, "mode": "flight" },
+          "game": {
+            "matchup": "NOP @ PHI",
+            "timeLocal": "19:00",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.36
+          }
+        },
+        {
+          "day": 6,
+          "date": "2027-02-02",
+          "weekday": "Mon",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 7,
+          "date": "2027-02-03",
+          "weekday": "Tue",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 8,
+          "date": "2027-02-04",
+          "weekday": "Wed",
+          "location": "Miami",
+          "travel": { "from": "Philadelphia", "to": "Miami", "hours": 2.75, "mode": "flight" },
+          "game": {
+            "matchup": "MIL @ MIA",
+            "timeLocal": "19:30",
+            "arenaCity": "Miami",
+            "interestScore": 3.52
+          }
+        },
+        {
+          "day": 9,
+          "date": "2027-02-05",
+          "weekday": "Thu",
+          "location": "Philadelphia",
+          "travel": { "from": "Miami", "to": "Philadelphia", "hours": 2.75, "mode": "flight" },
+          "game": {
+            "matchup": "DET @ PHI",
+            "timeLocal": "19:00",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.5
+          }
+        },
+        {
+          "day": 10,
+          "date": "2027-02-06",
+          "weekday": "Fri",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 11,
+          "date": "2027-02-07",
+          "weekday": "Sat",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": {
+            "matchup": "BOS @ PHI",
+            "timeLocal": "19:00",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.5
+          }
+        },
+        {
+          "day": 12,
+          "date": "2027-02-08",
+          "weekday": "Mon",
+          "location": "Philadelphia",
+          "travel": { "description": "Fly home" },
+          "game": {
+            "matchup": "BKN @ PHI",
+            "timeLocal": "19:00",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.36,
+            "optional": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "stars-east-tour",
+      "name": "Stars East Tour",
+      "recommended": true,
+      "recommendedFor": "Maximum star power — 76ers and Lakers twice, plus Orlando",
+      "startDate": "2027-02-24",
+      "endDate": "2027-03-07",
+      "cities": ["New York", "Orlando", "Miami", "Philadelphia"],
+      "gameCount": 6,
+      "totalInterestScore": 22.54,
+      "averageInterestScore": 3.76,
+      "marqueeGames": ["2027-02-27 PHI@NYK", "2027-03-04 LAL@PHI"],
+      "days": [
+        {
+          "day": 1,
+          "date": "2027-02-24",
+          "weekday": "Tue",
+          "location": "New York",
+          "travel": { "description": "Fly in → New York" },
+          "game": null
+        },
+        {
+          "day": 2,
+          "date": "2027-02-25",
+          "weekday": "Wed",
+          "location": "New York",
+          "travel": null,
+          "game": {
+            "matchup": "OKC @ NYK",
+            "timeLocal": "19:30",
+            "arenaCity": "New York",
+            "interestScore": 3.65
+          }
+        },
+        {
+          "day": 3,
+          "date": "2027-02-26",
+          "weekday": "Thu",
+          "location": "New York",
+          "travel": null,
+          "game": null,
+          "notes": "Stay in NYC — skip Philly day trip before Feb 27 game"
+        },
+        {
+          "day": 4,
+          "date": "2027-02-27",
+          "weekday": "Fri",
+          "location": "New York",
+          "travel": null,
+          "game": {
+            "matchup": "PHI @ NYK",
+            "timeLocal": "20:30",
+            "arenaCity": "New York",
+            "interestScore": 4.59,
+            "marquee": true
+          }
+        },
+        {
+          "day": 5,
+          "date": "2027-02-28",
+          "weekday": "Sat",
+          "location": "New York",
+          "travel": null,
+          "game": {
+            "matchup": "MIL @ NYK",
+            "timeLocal": "19:30",
+            "arenaCity": "New York",
+            "interestScore": 3.52
+          }
+        },
+        {
+          "day": 6,
+          "date": "2027-03-01",
+          "weekday": "Sun",
+          "location": "Orlando",
+          "travel": { "from": "New York", "to": "Orlando", "hours": 2.5, "mode": "flight" },
+          "game": null
+        },
+        {
+          "day": 7,
+          "date": "2027-03-02",
+          "weekday": "Mon",
+          "location": "Orlando",
+          "travel": null,
+          "game": {
+            "matchup": "LAL @ ORL",
+            "timeLocal": "19:00",
+            "arenaCity": "Orlando",
+            "interestScore": 3.36
+          }
+        },
+        {
+          "day": 8,
+          "date": "2027-03-03",
+          "weekday": "Tue",
+          "location": "Miami",
+          "travel": { "from": "Orlando", "to": "Miami", "hours": 3.5, "mode": "drive", "notes": "Morning drive after overnight in Orlando" },
+          "game": {
+            "matchup": "TOR @ MIA",
+            "timeLocal": "19:30",
+            "arenaCity": "Miami",
+            "interestScore": 3.52
+          }
+        },
+        {
+          "day": 9,
+          "date": "2027-03-04",
+          "weekday": "Wed",
+          "location": "Philadelphia",
+          "travel": { "from": "Miami", "to": "Philadelphia", "hours": 2.75, "mode": "flight", "notes": "Morning flight for 7 pm tip" },
+          "game": {
+            "matchup": "LAL @ PHI",
+            "timeLocal": "19:00",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.9,
+            "marquee": true
+          }
+        },
+        {
+          "day": 10,
+          "date": "2027-03-05",
+          "weekday": "Thu",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null,
+          "notes": "Rest / explore Philadelphia"
+        },
+        {
+          "day": 11,
+          "date": "2027-03-06",
+          "weekday": "Fri",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 12,
+          "date": "2027-03-07",
+          "weekday": "Sat",
+          "location": "Boston",
+          "travel": { "from": "Philadelphia", "to": "Boston", "hours": 5.0, "mode": "train", "description": "Or fly home from Philadelphia" },
+          "game": {
+            "matchup": "PHI @ BOS",
+            "timeLocal": null,
+            "arenaCity": "Boston",
+            "interestScore": 2.95,
+            "optional": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "capitol-to-coast",
+      "name": "Capitol to Coast",
+      "recommendedFor": "Northeast corridor + DC, ending in Miami with Lakers",
+      "startDate": "2027-03-14",
+      "endDate": "2027-03-25",
+      "cities": ["Philadelphia", "Washington", "New York", "Miami"],
+      "gameCount": 6,
+      "totalInterestScore": 22.55,
+      "averageInterestScore": 3.76,
+      "marqueeGames": ["2027-03-18 PHI@WAS", "2027-03-23 LAL@MIA"],
+      "days": [
+        {
+          "day": 1,
+          "date": "2027-03-14",
+          "weekday": "Sun",
+          "location": "New York",
+          "travel": { "description": "Fly in → New York" },
+          "game": null
+        },
+        {
+          "day": 2,
+          "date": "2027-03-15",
+          "weekday": "Mon",
+          "location": "Philadelphia",
+          "travel": { "from": "New York", "to": "Philadelphia", "hours": 1.5, "mode": "train" },
+          "game": {
+            "matchup": "TOR @ PHI",
+            "timeLocal": "19:00",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.36
+          }
+        },
+        {
+          "day": 3,
+          "date": "2027-03-16",
+          "weekday": "Tue",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 4,
+          "date": "2027-03-17",
+          "weekday": "Wed",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": {
+            "matchup": "CHI @ PHI",
+            "timeLocal": "19:00",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.36
+          }
+        },
+        {
+          "day": 5,
+          "date": "2027-03-18",
+          "weekday": "Thu",
+          "location": "Washington",
+          "travel": { "from": "Philadelphia", "to": "Washington", "hours": 2.5, "mode": "train" },
+          "game": {
+            "matchup": "PHI @ WAS",
+            "timeLocal": "19:00",
+            "arenaCity": "Washington",
+            "interestScore": 3.63
+          }
+        },
+        {
+          "day": 6,
+          "date": "2027-03-19",
+          "weekday": "Fri",
+          "location": "New York",
+          "travel": { "from": "Washington", "to": "New York", "hours": 3.5, "mode": "train", "notes": "Evening train — be in NYC before Mar 20 early tip" },
+          "game": null
+        },
+        {
+          "day": 7,
+          "date": "2027-03-20",
+          "weekday": "Sat",
+          "location": "New York",
+          "travel": null,
+          "game": {
+            "matchup": "WAS @ NYK",
+            "timeLocal": "13:00",
+            "arenaCity": "New York",
+            "interestScore": 3.96,
+            "notes": "Early tip — be in NYC the night before"
+          }
+        },
+        {
+          "day": 8,
+          "date": "2027-03-21",
+          "weekday": "Sun",
+          "location": "Miami",
+          "travel": { "from": "New York", "to": "Miami", "hours": 3.0, "mode": "flight", "notes": "Morning flight" },
+          "game": {
+            "matchup": "DEN @ MIA",
+            "timeLocal": "18:00",
+            "arenaCity": "Miami",
+            "interestScore": 3.65
+          }
+        },
+        {
+          "day": 9,
+          "date": "2027-03-22",
+          "weekday": "Mon",
+          "location": "Miami",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 10,
+          "date": "2027-03-23",
+          "weekday": "Tue",
+          "location": "Miami",
+          "travel": null,
+          "game": {
+            "matchup": "LAL @ MIA",
+            "timeLocal": "20:00",
+            "arenaCity": "Miami",
+            "interestScore": 4.59,
+            "marquee": true
+          }
+        },
+        {
+          "day": 11,
+          "date": "2027-03-24",
+          "weekday": "Wed",
+          "location": "Miami",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 12,
+          "date": "2027-03-25",
+          "weekday": "Thu",
+          "location": "Miami",
+          "travel": { "description": "Fly home" },
+          "game": {
+            "matchup": "UTA @ MIA",
+            "timeLocal": "19:30",
+            "arenaCity": "Miami",
+            "interestScore": 3.52,
+            "optional": true
+          }
+        }
+      ]
+    }
+  ],
+  "comparison": [
+    {
+      "id": "opening-tip-off",
+      "when": "Oct 2026",
+      "cities": ["NYC", "Philly", "Miami"],
+      "games": 6,
+      "averageScore": 3.76,
+      "marqueeGames": ["PHI@NYK"]
+    },
+    {
+      "id": "super-saturday-nyc",
+      "when": "Jan–Feb 2027",
+      "cities": ["NYC", "Philly", "Miami"],
+      "games": 5,
+      "averageScore": 3.7,
+      "marqueeGames": ["LAL@NYK"]
+    },
+    {
+      "id": "super-saturday-miami",
+      "when": "Jan–Feb 2027",
+      "cities": ["Miami", "Philly"],
+      "games": 5,
+      "averageScore": 3.69,
+      "marqueeGames": ["PHI@MIA"]
+    },
+    {
+      "id": "stars-east-tour",
+      "when": "Feb–Mar 2027",
+      "cities": ["NYC", "Orlando", "Miami", "Philly"],
+      "games": 6,
+      "averageScore": 3.76,
+      "marqueeGames": ["PHI@NYK", "LAL@PHI"],
+      "recommended": true
+    },
+    {
+      "id": "capitol-to-coast",
+      "when": "Mar 2027",
+      "cities": ["Philly", "DC", "NYC", "Miami"],
+      "games": 6,
+      "averageScore": 3.76,
+      "marqueeGames": ["PHI@WAS", "LAL@MIA"]
+    }
+  ]
+}

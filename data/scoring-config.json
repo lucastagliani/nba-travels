@@ -1,0 +1,23 @@
+{
+  "description": "Game interest scoring based on team and city tiers.",
+  "tierPoints": {
+    "S": 5,
+    "A": 3,
+    "B": 2,
+    "C": 1
+  },
+  "teamScore": {
+    "method": "blend",
+    "maxWeight": 0.7,
+    "minWeight": 0.3
+  },
+  "combination": {
+    "method": "weighted_sum",
+    "teamWeight": 0.45,
+    "cityWeight": 0.55
+  },
+  "visitedCities": {
+    "penalty": false,
+    "note": "Visited cities use their normal tier points; tier C cities score 1."
+  }
+}

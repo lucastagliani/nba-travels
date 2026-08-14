@@ -1,0 +1,70 @@
+{
+  "description": "City preference tiers for ranking trip destinations on the 2026-27 east coast focus.",
+  "defaultTier": "C",
+  "visitedCities": [
+    {
+      "city": "Los Angeles",
+      "visits": 2
+    },
+    {
+      "city": "Las Vegas",
+      "visits": 1
+    },
+    {
+      "city": "Sacramento",
+      "visits": 1
+    },
+    {
+      "city": "San Francisco",
+      "visits": 1
+    },
+    {
+      "city": "Dallas",
+      "visits": 1
+    }
+  ],
+  "tiers": {
+    "S": [
+      {
+        "city": "New York",
+        "name": "New York"
+      },
+      {
+        "city": "Miami",
+        "name": "Miami"
+      }
+    ],
+    "A": [
+      {
+        "city": "Philadelphia",
+        "name": "Philly"
+      },
+      {
+        "city": "Orlando",
+        "name": "Orlando"
+      },
+      {
+        "city": "Washington",
+        "name": "Washington"
+      }
+    ],
+    "B": [
+      {
+        "city": "Boston",
+        "name": "Boston"
+      },
+      {
+        "city": "Toronto",
+        "name": "Toronto"
+      },
+      {
+        "city": "Cleveland",
+        "name": "Cleveland"
+      },
+      {
+        "city": "Chicago",
+        "name": "Chicago"
+      }
+    ]
+  }
+}

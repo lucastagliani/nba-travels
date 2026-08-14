@@ -1,0 +1,83 @@
+{
+  "seasonYear": "2026-27",
+  "sourceGeneratedAt": "2026-08-13T19:39:51.3951Z",
+  "gameCount": 3,
+  "games": [
+    {
+      "gameId": "0012600009",
+      "gameCode": "20261003/MIATOR",
+      "seasonType": "Preseason",
+      "date": "2026-10-03",
+      "dayOfWeek": "Sat",
+      "timeLocal": "19:00",
+      "location": "Quebec City, QC",
+      "arena": {
+        "name": "Videotron Centre",
+        "city": "Quebec City",
+        "state": "QC"
+      },
+      "isNeutralSite": false,
+      "homeTeam": {
+        "city": "Toronto",
+        "name": "Raptors",
+        "tricode": "TOR"
+      },
+      "awayTeam": {
+        "city": "Miami",
+        "name": "Heat",
+        "tricode": "MIA"
+      },
+      "notes": "NBA Canada Game"
+    },
+    {
+      "gameId": "0012600004",
+      "gameCode": "20261005/MEMATL",
+      "seasonType": "Preseason",
+      "date": "2026-10-05",
+      "dayOfWeek": "Mon",
+      "timeLocal": "19:00",
+      "location": "Atlanta, GA",
+      "arena": {
+        "name": "State Farm Arena",
+        "city": "Atlanta",
+        "state": "GA"
+      },
+      "isNeutralSite": false,
+      "homeTeam": {
+        "city": "Atlanta",
+        "name": "Hawks",
+        "tricode": "ATL"
+      },
+      "awayTeam": {
+        "city": "Memphis",
+        "name": "Grizzlies",
+        "tricode": "MEM"
+      }
+    },
+    {
+      "gameId": "0012600010",
+      "gameCode": "20261006/LALGSW",
+      "seasonType": "Preseason",
+      "date": "2026-10-06",
+      "dayOfWeek": "Tue",
+      "timeLocal": "19:00",
+      "location": "San Francisco, CA",
+      "arena": {
+        "name": "Chase Center",
+        "city": "San Francisco",
+        "state": "CA"
+      },
+      "isNeutralSite": false,
+      "homeTeam": {
+        "city": "Golden State",
+        "name": "Warriors",
+        "tricode": "GSW"
+      },
+      "awayTeam": {
+        "city": "Los Angeles",
+        "name": "Lakers",
+        "tricode": "LAL"
+      }
+    }
+  ]
+}

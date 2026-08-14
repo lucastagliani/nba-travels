@@ -1,0 +1,72 @@
+{
+  "description": "Team preference tiers for ranking game interest on the 2026-27 trip.",
+  "defaultTier": "C",
+  "tiers": {
+    "S": [
+      {
+        "tricode": "PHI",
+        "name": "76ers"
+      },
+      {
+        "tricode": "LAL",
+        "name": "Lakers"
+      }
+    ],
+    "A": [
+      {
+        "tricode": "WAS",
+        "name": "Wizards"
+      },
+      {
+        "tricode": "SAS",
+        "name": "Spurs"
+      },
+      {
+        "tricode": "DAL",
+        "name": "Mavericks"
+      },
+      {
+        "tricode": "GSW",
+        "name": "Warriors"
+      }
+    ],
+    "B": [
+      {
+        "tricode": "IND",
+        "name": "Pacers"
+      },
+      {
+        "tricode": "OKC",
+        "name": "Thunder"
+      },
+      {
+        "tricode": "DEN",
+        "name": "Nuggets"
+      },
+      {
+        "tricode": "NYK",
+        "name": "Knicks"
+      },
+      {
+        "tricode": "CLE",
+        "name": "Cavaliers"
+      },
+      {
+        "tricode": "MIA",
+        "name": "Heat"
+      },
+      {
+        "tricode": "DET",
+        "name": "Pistons"
+      },
+      {
+        "tricode": "BOS",
+        "name": "Celtics"
+      },
+      {
+        "tricode": "MIN",
+        "name": "Timberwolves"
+      }
+    ]
+  }
+}
