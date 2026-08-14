@@ -44,10 +44,6 @@ function TeamGamesCell({ analysis }: { analysis: ItineraryAnalysis }) {
 
 export function CompareView({ options, onSelect }: CompareViewProps) {
   const analyses = useMemo(() => options.map(analyzeItinerary), [options])
-  const sorted = useMemo(
-    () => [...analyses].sort((a, b) => b.option.totalInterestScore - a.option.totalInterestScore),
-    [analyses],
-  )
 
   return (
     <div className="space-y-4">
@@ -74,7 +70,7 @@ export function CompareView({ options, onSelect }: CompareViewProps) {
             </tr>
           </thead>
           <tbody>
-            {sorted.map((analysis) => {
+            {analyses.map((analysis) => {
               const { option, route, budget } = analysis
               return (
                 <tr
@@ -130,7 +126,7 @@ export function CompareView({ options, onSelect }: CompareViewProps) {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        {sorted.map((analysis) => {
+        {analyses.map((analysis) => {
           const { option, route, budget } = analysis
           return (
             <div

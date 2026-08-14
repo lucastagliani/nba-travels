@@ -8,13 +8,22 @@
     "airport": "POA"
   },
   "internationalRoundTripPerPerson": 950,
+  "internationalRoundTripByCity": {
+    "New York": 950,
+    "Miami": 900,
+    "Philadelphia": 920,
+    "Orlando": 880,
+    "Washington": 940,
+    "Boston": 970
+  },
+  "internationalOpenJawPremiumPerPerson": 60,
   "travel": {
     "trainPerMile": 0.35,
     "flightFlat": 180,
     "drivePerMile": 0.3
   },
   "hotelPerNight": 220,
-  "ticketDefault": 100,
-  "ticketMarquee": 180,
+  "ticketDefault": 200,
+  "ticketMarquee": 360,
   "dailyFood": 80
 }

@@ -10,6 +10,8 @@ const config = budgetConfig as {
   travelersNote?: string
   home: { city: string; country: string; airport: string }
   internationalRoundTripPerPerson: number
+  internationalRoundTripByCity?: Record<string, number>
+  internationalOpenJawPremiumPerPerson?: number
   travel: { trainPerMile: number; flightFlat: number; drivePerMile: number }
   hotelPerNight: number
   ticketDefault: number
@@ -41,6 +43,7 @@ export interface BudgetEstimate {
   currency: string
   travelers: number
   arrivalCity: string
+  departureCity: string
   internationalFlights: number
   domesticTravel: number
   travel: number
@@ -50,6 +53,7 @@ export interface BudgetEstimate {
   total: number
   tripDays: number
   gameCount: number
+  openJaw: boolean
 }
 
 export interface ItineraryAnalysis {
@@ -58,6 +62,15 @@ export interface ItineraryAnalysis {
   daysPerCity: CityDayCount[]
   gamesPerTeam: TeamGameCount[]
   budget: BudgetEstimate
+}
+
+/** Chronological order by trip start date (then name for same-day trips). */
+export function sortItinerariesByDate(options: ItineraryOption[]): ItineraryOption[] {
+  return [...options].sort((a, b) => {
+    const byDate = a.startDate.localeCompare(b.startDate)
+    if (byDate !== 0) return byDate
+    return a.name.localeCompare(b.name)
+  })
 }
 
 export function parseMatchupTeams(matchup: string): { away: string; home: string } | null {
@@ -116,13 +129,33 @@ function getArrivalCity(days: Day[]): string {
   return days[0]?.location ?? 'United States'
 }
 
+function getDepartureCity(days: Day[]): string {
+  return days[days.length - 1]?.location ?? getArrivalCity(days)
+}
+
+function internationalFlightsCost(arrivalCity: string, departureCity: string): number {
+  const byCity = config.internationalRoundTripByCity ?? {}
+  const defaultRate = config.internationalRoundTripPerPerson
+  const arrivalRate = byCity[arrivalCity] ?? defaultRate
+  const departureRate = byCity[departureCity] ?? defaultRate
+  const openJawPremium = config.internationalOpenJawPremiumPerPerson ?? 0
+
+  let perPerson = arrivalRate
+  if (arrivalCity !== departureCity) {
+    perPerson = Math.round((arrivalRate + departureRate) / 2 + openJawPremium)
+  }
+
+  return perPerson * travelers
+}
+
 export function estimateBudget(days: Day[], route: ParsedRoute): BudgetEstimate {
   const games = extractGames(days, false)
   const tripDays = days.length
   const arrivalCity = getArrivalCity(days)
+  const departureCity = getDepartureCity(days)
+  const openJaw = arrivalCity !== departureCity
 
-  const internationalFlights =
-    config.internationalRoundTripPerPerson * travelers
+  const internationalFlights = internationalFlightsCost(arrivalCity, departureCity)
 
   const domesticTravel = route.legs.reduce(
     (sum, leg) => sum + domesticLegCost(leg.mode, leg.distanceMiles),
@@ -142,6 +175,7 @@ export function estimateBudget(days: Day[], route: ParsedRoute): BudgetEstimate 
     currency: config.currency,
     travelers,
     arrivalCity,
+    departureCity,
     internationalFlights: Math.round(internationalFlights),
     domesticTravel: Math.round(domesticTravel),
     travel: Math.round(travel),
@@ -151,6 +185,7 @@ export function estimateBudget(days: Day[], route: ParsedRoute): BudgetEstimate 
     total: Math.round(total),
     tripDays,
     gameCount: games.length,
+    openJaw,
   }
 }
 

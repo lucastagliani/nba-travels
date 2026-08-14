@@ -18,7 +18,7 @@ export function ItineraryPicker({ options, selectedId, onSelect }: ItineraryPick
       >
         {options.map((option) => (
           <option key={option.id} value={option.id}>
-            {option.name}
+            {option.startDate.slice(5)} · {option.name}
             {option.recommended ? ' ★' : ''}
           </option>
         ))}

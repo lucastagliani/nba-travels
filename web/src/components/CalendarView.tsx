@@ -1,5 +1,7 @@
 import { useMemo } from 'react'
 import type { Day } from '../types'
+import { WeatherBadge } from './WeatherBadge'
+import { getWeatherForDay } from '../lib/weather'
 
 interface CalendarViewProps {
   days: Day[]
@@ -184,7 +186,7 @@ export function CalendarView({
           <p className="text-sm text-slate-400">{monthLabel}</p>
         </div>
         <p className="text-xs text-slate-500">
-          Click a trip day to highlight it on the map · 🏀 game · ✈️/🚆 travel
+          Click a trip day to highlight it on the map · 🏀 game · ✈️/🚆 travel · temps are 6-yr historical avg
         </p>
       </div>
 
@@ -240,6 +242,11 @@ export function CalendarView({
                   {trip && (
                     <div className="mt-2 space-y-1 text-xs">
                       <div className="truncate font-medium text-slate-300">{trip.location}</div>
+                      <WeatherBadge
+                        weather={getWeatherForDay(trip.location, trip.date)}
+                        compact
+                        className="text-[10px]"
+                      />
 
                       {hasGame && (
                         <div

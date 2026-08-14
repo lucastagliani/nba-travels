@@ -53,6 +53,11 @@ export interface CityCoords {
   lng: number
   arena: string
   state: string
+  neighborhood?: string
+  timezone?: string
+  airport?: string
+  airports?: string[]
+  trainStation?: string
 }
 
 export type CityTier = 'S' | 'A' | 'B' | 'C'

@@ -65,6 +65,9 @@ export function printItinerary(option: ItineraryOption): void {
     .join('')
 
   const b = analysis.budget
+  const flightNote = b.openJaw
+    ? `POA → ${b.arrivalCity}, return ${b.departureCity} (open-jaw) × ${b.travelers}`
+    : `POA ↔ ${b.arrivalCity} round trip × ${b.travelers}`
   const html = `<!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +94,7 @@ export function printItinerary(option: ItineraryOption): void {
 
   <h2>Budget estimate (${b.travelers} travelers)</h2>
   <div class="budget">
-    <div>POA ↔ ${b.arrivalCity}: ${formatCurrency(b.internationalFlights)}</div>
+    <div>POA flights: ${flightNote} — ${formatCurrency(b.internationalFlights)}</div>
     <div>US domestic: ${formatCurrency(b.domesticTravel)}</div>
     <div>Hotels (1 room): ${formatCurrency(b.hotels)}</div>
     <div>Tickets × ${b.travelers}: ${formatCurrency(b.tickets)}</div>

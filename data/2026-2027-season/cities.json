@@ -3,60 +3,110 @@
     "lat": 40.7505,
     "lng": -73.9934,
     "arena": "Madison Square Garden",
-    "state": "NY"
+    "neighborhood": "Midtown Manhattan",
+    "state": "NY",
+    "timezone": "America/New_York",
+    "airport": "JFK",
+    "airports": ["JFK", "LGA", "EWR"],
+    "trainStation": "Penn Station"
   },
   "Philadelphia": {
     "lat": 39.9012,
     "lng": -75.172,
     "arena": "Wells Fargo Center",
-    "state": "PA"
+    "neighborhood": "South Philadelphia",
+    "state": "PA",
+    "timezone": "America/New_York",
+    "airport": "PHL",
+    "airports": ["PHL"],
+    "trainStation": "30th Street Station"
   },
   "Miami": {
     "lat": 25.7814,
     "lng": -80.187,
     "arena": "Kaseya Center",
-    "state": "FL"
+    "neighborhood": "Downtown Miami",
+    "state": "FL",
+    "timezone": "America/New_York",
+    "airport": "MIA",
+    "airports": ["MIA", "FLL"],
+    "trainStation": "MiamiCentral (Brightline)"
   },
   "Washington": {
     "lat": 38.8981,
     "lng": -77.0209,
     "arena": "Capital One Arena",
-    "state": "DC"
+    "neighborhood": "Chinatown",
+    "state": "DC",
+    "timezone": "America/New_York",
+    "airport": "DCA",
+    "airports": ["DCA", "IAD", "BWI"],
+    "trainStation": "Union Station"
   },
   "Orlando": {
     "lat": 28.5392,
     "lng": -81.3839,
     "arena": "Kia Center",
-    "state": "FL"
+    "neighborhood": "Downtown Orlando",
+    "state": "FL",
+    "timezone": "America/New_York",
+    "airport": "MCO",
+    "airports": ["MCO"],
+    "trainStation": "Orlando (Brightline)"
   },
   "Boston": {
     "lat": 42.3662,
     "lng": -71.0621,
     "arena": "TD Garden",
-    "state": "MA"
+    "neighborhood": "West End",
+    "state": "MA",
+    "timezone": "America/New_York",
+    "airport": "BOS",
+    "airports": ["BOS"],
+    "trainStation": "South Station"
   },
   "Cleveland": {
     "lat": 41.4965,
     "lng": -81.6882,
     "arena": "Rocket Mortgage FieldHouse",
-    "state": "OH"
+    "neighborhood": "Downtown Cleveland",
+    "state": "OH",
+    "timezone": "America/New_York",
+    "airport": "CLE",
+    "airports": ["CLE"],
+    "trainStation": "Cleveland Lakefront"
   },
   "Chicago": {
     "lat": 41.8807,
     "lng": -87.6742,
     "arena": "United Center",
-    "state": "IL"
+    "neighborhood": "Near West Side",
+    "state": "IL",
+    "timezone": "America/Chicago",
+    "airport": "ORD",
+    "airports": ["ORD", "MDW"],
+    "trainStation": "Union Station"
   },
   "Toronto": {
     "lat": 43.6435,
     "lng": -79.3791,
     "arena": "Scotiabank Arena",
-    "state": "ON"
+    "neighborhood": "South Core",
+    "state": "ON",
+    "timezone": "America/Toronto",
+    "airport": "YYZ",
+    "airports": ["YYZ", "YTZ"],
+    "trainStation": "Union Station"
   },
   "Atlanta": {
     "lat": 33.7573,
     "lng": -84.3963,
     "arena": "State Farm Arena",
-    "state": "GA"
+    "neighborhood": "Downtown Atlanta",
+    "state": "GA",
+    "timezone": "America/New_York",
+    "airport": "ATL",
+    "airports": ["ATL"],
+    "trainStation": "Peachtree Station"
   }
 }

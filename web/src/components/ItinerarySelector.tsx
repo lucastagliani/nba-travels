@@ -36,7 +36,7 @@ export function ItinerarySelector({ options, selectedId, onSelect }: ItinerarySe
               </div>
               <p className="mt-1 text-xs text-slate-400">{option.recommendedFor}</p>
               <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-slate-500">
-                <span>{option.startDate.slice(0, 7)}</span>
+                <span>{option.startDate.slice(5)} → {option.endDate.slice(5)}</span>
                 <span>·</span>
                 <span>{option.gameCount} games</span>
                 <span>·</span>

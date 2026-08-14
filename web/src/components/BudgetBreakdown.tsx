@@ -13,11 +13,17 @@ export function BudgetBreakdown({ budget, compact = false }: BudgetBreakdownProp
     )
   }
 
+  const flightLabel = budget.openJaw
+    ? `Flights ${budgetHomeLabel()} → ${budget.arrivalCity}, return ${budget.departureCity}`
+    : `Flights ${budgetHomeLabel()} ↔ ${budget.arrivalCity}`
+
   const rows = [
     {
-      label: `Flights ${budgetHomeLabel()} ↔ ${budget.arrivalCity}`,
+      label: flightLabel,
       value: budget.internationalFlights,
-      note: `Round trip × ${budget.travelers}`,
+      note: budget.openJaw
+        ? `Open-jaw × ${budget.travelers}`
+        : `Round trip × ${budget.travelers}`,
     },
     {
       label: 'US domestic travel',

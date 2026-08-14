@@ -1,6 +1,8 @@
 import { MODE_ICONS } from '../lib/constants'
 import { getLegsForDay } from '../lib/routeParser'
+import { getCityMetaLabel, getWeatherForDay } from '../lib/weather'
 import type { Day, RouteLeg } from '../types'
+import { WeatherBadge } from './WeatherBadge'
 
 interface DayTimelineProps {
   days: Day[]
@@ -31,6 +33,7 @@ export function DayTimeline({ days, legs, activeDay, onSelectDay }: DayTimelineP
         {days.map((day) => {
           const selected = activeDay === day.day
           const dayLegs = getLegsForDay(legs, day.day)
+          const cityMeta = getCityMetaLabel(day.location)
 
           return (
             <button
@@ -52,6 +55,15 @@ export function DayTimeline({ days, legs, activeDay, onSelectDay }: DayTimelineP
                 </span>
                 <span className="text-xs font-medium text-slate-300">{day.location}</span>
               </div>
+
+              <WeatherBadge
+                weather={getWeatherForDay(day.location, day.date)}
+                className="mt-1 block text-[11px]"
+              />
+
+              {cityMeta && (
+                <p className="mt-0.5 text-[10px] text-slate-600">{cityMeta}</p>
+              )}
 
               {dayLegs.length > 0 && (
                 <div className="mt-1.5 text-xs text-slate-400">

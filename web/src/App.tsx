@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import itineraryData from '@season/itinerary-options.json'
 import { MobileBottomNav } from './components/MobileBottomNav'
+import { sortItinerariesByDate } from './lib/itineraryStats'
 import { readUrlState } from './lib/print'
 import type { ItineraryData } from './types'
 import { CompareView } from './views/CompareView'
@@ -25,7 +26,8 @@ function syncUrl(view: AppView, id: string | null, day: number | null) {
 }
 
 export default function App() {
-  const defaultId = data.options.find((o) => o.recommended)?.id ?? data.options[0].id
+  const options = useMemo(() => sortItinerariesByDate(data.options), [])
+  const defaultId = options.find((o) => o.recommended)?.id ?? options[0].id
   const initial = readUrlState()
 
   const [view, setView] = useState<AppView>(initial.view)
@@ -33,8 +35,8 @@ export default function App() {
   const [activeDay, setActiveDay] = useState<number | null>(initial.day)
 
   const selectedExists = useMemo(
-    () => data.options.some((o) => o.id === selectedId),
-    [selectedId],
+    () => options.some((o) => o.id === selectedId),
+    [options, selectedId],
   )
 
   useEffect(() => {
@@ -97,10 +99,10 @@ export default function App() {
 
       <main className="mx-auto max-w-7xl px-4 py-4 pb-24 md:p-6 md:pb-6">
         {view === 'compare' ? (
-          <CompareView options={data.options} onSelect={openDetail} />
+          <CompareView options={options} onSelect={openDetail} />
         ) : (
           <DetailView
-            options={data.options}
+            options={options}
             selectedId={selectedId}
             activeDay={activeDay}
             onSelectId={setSelectedId}

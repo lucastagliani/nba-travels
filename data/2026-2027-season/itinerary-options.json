@@ -17,7 +17,7 @@
     "Miami-Philadelphia": { "hours": 2.75, "mode": "flight" },
     "Philadelphia-Miami": { "hours": 2.75, "mode": "flight" },
     "New York-Orlando": { "hours": 2.5, "mode": "flight" },
-    "Orlando-Miami": { "hours": 3.5, "mode": "drive" },
+    "Orlando-Miami": { "hours": 1.25, "mode": "flight" },
     "Philadelphia-Boston": { "hours": 5.0, "mode": "train" }
   },
   "options": [
@@ -162,6 +162,279 @@
             "arenaCity": "Miami",
             "interestScore": 3.65
           }
+        }
+      ]
+    },
+    {
+      "id": "holiday-east-run",
+      "name": "Holiday East Run",
+      "recommendedFor": "Thanksgiving week + early December; WAS @ Miami anchor; stronger late-fall matchups than opening week",
+      "startDate": "2026-11-22",
+      "endDate": "2026-12-03",
+      "cities": ["New York", "Philadelphia", "Miami"],
+      "gameCount": 4,
+      "totalInterestScore": 14.65,
+      "averageInterestScore": 3.66,
+      "marqueeGames": ["2026-11-22 IND@NYK", "2026-12-03 WAS@MIA"],
+      "conflictNote": "Nov 22 also has OKC @ MIA (6 pm) — this route prioritizes IND @ NYK (8 pm) after flying into NYC",
+      "days": [
+        {
+          "day": 1,
+          "date": "2026-11-22",
+          "weekday": "Sun",
+          "location": "New York",
+          "travel": { "description": "Fly in → New York" },
+          "game": {
+            "matchup": "IND @ NYK",
+            "timeLocal": "20:00",
+            "arenaCity": "New York",
+            "interestScore": 3.65,
+            "marquee": true
+          }
+        },
+        {
+          "day": 2,
+          "date": "2026-11-23",
+          "weekday": "Mon",
+          "location": "New York",
+          "travel": null,
+          "game": null,
+          "notes": "Rest / explore NYC"
+        },
+        {
+          "day": 3,
+          "date": "2026-11-24",
+          "weekday": "Tue",
+          "location": "New York",
+          "travel": null,
+          "game": null,
+          "notes": "Thanksgiving eve in NYC"
+        },
+        {
+          "day": 4,
+          "date": "2026-11-25",
+          "weekday": "Wed",
+          "location": "Philadelphia",
+          "travel": { "from": "New York", "to": "Philadelphia", "hours": 1.5, "mode": "train", "notes": "Thanksgiving Day train" },
+          "game": null,
+          "notes": "Thanksgiving in Philadelphia"
+        },
+        {
+          "day": 5,
+          "date": "2026-11-26",
+          "weekday": "Thu",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null,
+          "notes": "Explore Philadelphia"
+        },
+        {
+          "day": 6,
+          "date": "2026-11-27",
+          "weekday": "Fri",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 7,
+          "date": "2026-11-28",
+          "weekday": "Sat",
+          "location": "New York",
+          "travel": { "from": "Philadelphia", "to": "New York", "hours": 1.5, "mode": "train" },
+          "game": null
+        },
+        {
+          "day": 8,
+          "date": "2026-11-29",
+          "weekday": "Sun",
+          "location": "New York",
+          "travel": null,
+          "game": {
+            "matchup": "ATL @ NYK",
+            "timeLocal": "18:00",
+            "arenaCity": "New York",
+            "interestScore": 3.52
+          }
+        },
+        {
+          "day": 9,
+          "date": "2026-11-30",
+          "weekday": "Mon",
+          "location": "Miami",
+          "travel": { "from": "New York", "to": "Miami", "hours": 3.0, "mode": "flight", "notes": "Morning flight" },
+          "game": null
+        },
+        {
+          "day": 10,
+          "date": "2026-12-01",
+          "weekday": "Tue",
+          "location": "Miami",
+          "travel": null,
+          "game": {
+            "matchup": "ATL @ MIA",
+            "timeLocal": "19:30",
+            "arenaCity": "Miami",
+            "interestScore": 3.52
+          }
+        },
+        {
+          "day": 11,
+          "date": "2026-12-02",
+          "weekday": "Wed",
+          "location": "Miami",
+          "travel": null,
+          "game": null,
+          "notes": "Rest / beach day before finale"
+        },
+        {
+          "day": 12,
+          "date": "2026-12-03",
+          "weekday": "Thu",
+          "location": "Miami",
+          "travel": { "description": "Fly home next day" },
+          "game": {
+            "matchup": "WAS @ MIA",
+            "timeLocal": "19:30",
+            "arenaCity": "Miami",
+            "interestScore": 3.96,
+            "marquee": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "christmas-at-msg",
+      "name": "Christmas at MSG",
+      "recommendedFor": "Holiday season bucket list; Spurs at MSG on Christmas Day; Mavs in Philly to open the trip",
+      "startDate": "2026-12-17",
+      "endDate": "2026-12-28",
+      "cities": ["Philadelphia", "New York", "Miami"],
+      "gameCount": 4,
+      "totalInterestScore": 14.63,
+      "averageInterestScore": 3.66,
+      "marqueeGames": ["2026-12-25 SAS@NYK"],
+      "conflictNote": "Dec 23 has simultaneous tip-offs in PHI, NYC, and MIA — this route picks UTA @ NYK at MSG",
+      "days": [
+        {
+          "day": 1,
+          "date": "2026-12-17",
+          "weekday": "Thu",
+          "location": "Philadelphia",
+          "travel": { "description": "Fly in → Philadelphia" },
+          "game": {
+            "matchup": "DAL @ PHI",
+            "timeLocal": "19:00",
+            "arenaCity": "Philadelphia",
+            "interestScore": 3.63
+          }
+        },
+        {
+          "day": 2,
+          "date": "2026-12-18",
+          "weekday": "Fri",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 3,
+          "date": "2026-12-19",
+          "weekday": "Sat",
+          "location": "Philadelphia",
+          "travel": null,
+          "game": null,
+          "notes": "Explore Philadelphia"
+        },
+        {
+          "day": 4,
+          "date": "2026-12-20",
+          "weekday": "Sun",
+          "location": "New York",
+          "travel": { "from": "Philadelphia", "to": "New York", "hours": 1.5, "mode": "train" },
+          "game": null
+        },
+        {
+          "day": 5,
+          "date": "2026-12-21",
+          "weekday": "Mon",
+          "location": "New York",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 6,
+          "date": "2026-12-22",
+          "weekday": "Tue",
+          "location": "New York",
+          "travel": null,
+          "game": null,
+          "notes": "Holiday prep in NYC"
+        },
+        {
+          "day": 7,
+          "date": "2026-12-23",
+          "weekday": "Wed",
+          "location": "New York",
+          "travel": null,
+          "game": {
+            "matchup": "UTA @ NYK",
+            "timeLocal": "19:30",
+            "arenaCity": "New York",
+            "interestScore": 3.52
+          }
+        },
+        {
+          "day": 8,
+          "date": "2026-12-24",
+          "weekday": "Thu",
+          "location": "New York",
+          "travel": null,
+          "game": null,
+          "notes": "Christmas Eve in NYC"
+        },
+        {
+          "day": 9,
+          "date": "2026-12-25",
+          "weekday": "Fri",
+          "location": "New York",
+          "travel": null,
+          "game": {
+            "matchup": "SAS @ NYK",
+            "timeLocal": "12:00",
+            "arenaCity": "New York",
+            "interestScore": 3.96,
+            "marquee": true
+          }
+        },
+        {
+          "day": 10,
+          "date": "2026-12-26",
+          "weekday": "Sat",
+          "location": "Miami",
+          "travel": { "from": "New York", "to": "Miami", "hours": 3.0, "mode": "flight", "notes": "Post-Christmas flight south" },
+          "game": null
+        },
+        {
+          "day": 11,
+          "date": "2026-12-27",
+          "weekday": "Sun",
+          "location": "Miami",
+          "travel": null,
+          "game": {
+            "matchup": "CHA @ MIA",
+            "timeLocal": "18:00",
+            "arenaCity": "Miami",
+            "interestScore": 3.52
+          }
+        },
+        {
+          "day": 12,
+          "date": "2026-12-28",
+          "weekday": "Mon",
+          "location": "Miami",
+          "travel": { "description": "Fly home" },
+          "game": null
         }
       ]
     },
@@ -543,7 +816,7 @@
           "date": "2027-03-03",
           "weekday": "Tue",
           "location": "Miami",
-          "travel": { "from": "Orlando", "to": "Miami", "hours": 3.5, "mode": "drive", "notes": "Morning drive after overnight in Orlando" },
+          "travel": { "from": "Orlando", "to": "Miami", "hours": 1.25, "mode": "flight", "notes": "Morning flight MCO → MIA" },
           "game": {
             "matchup": "TOR @ MIA",
             "timeLocal": "19:30",
@@ -755,6 +1028,22 @@
       "games": 6,
       "averageScore": 3.76,
       "marqueeGames": ["PHI@NYK"]
+    },
+    {
+      "id": "holiday-east-run",
+      "when": "Nov–Dec 2026",
+      "cities": ["NYC", "Philly", "Miami"],
+      "games": 4,
+      "averageScore": 3.66,
+      "marqueeGames": ["IND@NYK", "WAS@MIA"]
+    },
+    {
+      "id": "christmas-at-msg",
+      "when": "Dec 2026",
+      "cities": ["Philly", "NYC", "Miami"],
+      "games": 4,
+      "averageScore": 3.66,
+      "marqueeGames": ["SAS@NYK"]
     },
     {
       "id": "super-saturday-nyc",

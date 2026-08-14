@@ -45,17 +45,18 @@ Track improvements and new features for the 2026–27 trip planner.
 
 ## City & travel metadata
 
-- [ ] Extend `cities.json`: timezone, airport codes, arena neighborhood
-- [ ] More accurate POA → US city flight estimates (by arrival city)
-- [ ] Optional return flight from last city (not always same as arrival)
-- [ ] Rental car vs drive cost for Florida legs
+- [x] Extend `cities.json`: timezone, airport codes, arena neighborhood
+- [x] `travel-routes.json` with preferred train/flight modes (no driving legs)
+- [x] More accurate POA → US city flight estimates (by arrival city)
+- [x] Open-jaw return pricing when last city ≠ arrival city
+- [ ] Rental car vs drive cost for Florida legs (N/A — Florida legs use flight/train)
 
 ---
 
 ## UI / UX
 
-- [ ] Mobile layout polish (calendar + map stack, larger tap targets)
-- [ ] “Copy link” toast confirmation
+- [x] Mobile layout polish (calendar + map stack, larger tap targets)
+- [x] “Copy link” toast confirmation
 - [ ] Compare view: sort/filter columns, highlight best per metric
 - [ ] Map: show Porto Alegre as home marker (context only, off-US map inset?)
 - [ ] Dark/light theme toggle
@@ -77,7 +78,7 @@ Track improvements and new features for the 2026–27 trip planner.
 - [ ] Ticket price ranges by city/team (StubHub-style placeholders)
 - [ ] Hotel cost tiers (budget / mid / nice)
 - [ ] Export itinerary to Google Calendar (.ics)
-- [ ] Weather averages by city/month
+- [x] Weather averages by city/day (`weather-normals.json` + `scripts/fetch_weather.py`)
 - [ ] Visa / ESTA reminder for Brazilian travelers
 
 ---
@@ -85,5 +86,7 @@ Track improvements and new features for the 2026–27 trip planner.
 ## Notes
 
 - Budget assumptions live in `data/budget-config.json` — tune there first.
+- City metadata: `data/2026-2027-season/cities.json`, routes: `travel-routes.json`.
+- Refresh weather normals: `python3 scripts/fetch_weather.py`
 - Tier preferences live in `data/team-tiers.json` and `data/city-tiers.json`.
 - Re-score after tier or scoring changes: `python3 scripts/score_games.py`

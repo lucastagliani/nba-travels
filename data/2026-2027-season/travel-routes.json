@@ -1,0 +1,104 @@
+{
+  "description": "Preferred inter-city travel modes for East Coast NBA trips. Trains and flights prioritized over driving.",
+  "routes": {
+    "New York-Philadelphia": {
+      "mode": "train",
+      "hours": 1.5,
+      "operator": "Amtrak Northeast Regional / Acela",
+      "notes": "Penn Station ↔ 30th Street; frequent departures"
+    },
+    "Philadelphia-New York": {
+      "mode": "train",
+      "hours": 1.5,
+      "operator": "Amtrak Northeast Regional / Acela"
+    },
+    "Philadelphia-Washington": {
+      "mode": "train",
+      "hours": 2.5,
+      "operator": "Amtrak Northeast Regional / Acela"
+    },
+    "Washington-Philadelphia": {
+      "mode": "train",
+      "hours": 2.5,
+      "operator": "Amtrak Northeast Regional / Acela"
+    },
+    "Washington-New York": {
+      "mode": "train",
+      "hours": 3.5,
+      "operator": "Amtrak Northeast Regional / Acela"
+    },
+    "New York-Washington": {
+      "mode": "train",
+      "hours": 3.5,
+      "operator": "Amtrak Northeast Regional / Acela"
+    },
+    "New York-Miami": {
+      "mode": "flight",
+      "hours": 3.0,
+      "operator": "Major carriers from JFK/LGA/EWR",
+      "notes": "~3h block time; many daily nonstops"
+    },
+    "Miami-New York": {
+      "mode": "flight",
+      "hours": 3.0
+    },
+    "Miami-Philadelphia": {
+      "mode": "flight",
+      "hours": 2.75,
+      "operator": "MIA ↔ PHL nonstops"
+    },
+    "Philadelphia-Miami": {
+      "mode": "flight",
+      "hours": 2.75
+    },
+    "New York-Orlando": {
+      "mode": "flight",
+      "hours": 2.5,
+      "operator": "JFK/LGA/EWR ↔ MCO"
+    },
+    "Orlando-New York": {
+      "mode": "flight",
+      "hours": 2.5
+    },
+    "Orlando-Miami": {
+      "mode": "flight",
+      "hours": 1.25,
+      "operator": "MCO ↔ MIA or Brightline train ~3.5h",
+      "notes": "Prefer short flight over ~235 mi drive; Brightline train is an alternative"
+    },
+    "Miami-Orlando": {
+      "mode": "flight",
+      "hours": 1.25,
+      "notes": "Brightline train alternative ~3.5h MiamiCentral ↔ Orlando"
+    },
+    "Philadelphia-Boston": {
+      "mode": "train",
+      "hours": 5.0,
+      "operator": "Amtrak Northeast Regional / Acela",
+      "notes": "30th Street ↔ South Station; Acela ~4h"
+    },
+    "Boston-Philadelphia": {
+      "mode": "train",
+      "hours": 5.0,
+      "operator": "Amtrak Northeast Regional / Acela"
+    },
+    "Washington-Miami": {
+      "mode": "flight",
+      "hours": 2.5,
+      "operator": "DCA/IAD ↔ MIA"
+    },
+    "Miami-Washington": {
+      "mode": "flight",
+      "hours": 2.5
+    },
+    "New York-Boston": {
+      "mode": "train",
+      "hours": 4.0,
+      "operator": "Amtrak Acela / Northeast Regional"
+    },
+    "Boston-New York": {
+      "mode": "train",
+      "hours": 4.0
+    }
+  }
+}
