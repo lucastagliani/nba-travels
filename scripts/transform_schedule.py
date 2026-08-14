@@ -63,12 +63,12 @@ def main() -> None:
     parser.add_argument(
         "--input",
         type=Path,
-        default=Path("data/nba-full-schedule-2026-2027-raw.json"),
+        default=Path("data/2026-2027-season/nba-full-schedule-2026-2027-raw.json"),
     )
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("data/nba-schedule-2026-2027.json"),
+        default=Path("data/2026-2027-season/nba-schedule-2026-2027.json"),
     )
     parser.add_argument(
         "--limit",

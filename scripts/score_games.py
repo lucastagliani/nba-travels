@@ -25,6 +25,14 @@ def blend_team_score(home_pts, away_pts, max_weight, min_weight):
     return (max_weight * high) + (min_weight * low)
 
 
+def apply_season_multiplier(game_score, season_type, config):
+    multipliers = config.get("seasonTypeMultipliers", {})
+    if not season_type:
+        return game_score
+    multiplier = multipliers.get(season_type, 1.0)
+    return game_score * multiplier
+
+
 def score_game(game, team_lookup, team_default, city_lookup, city_default, config):
     points_map = config["tierPoints"]
     team_cfg = config["teamScore"]
@@ -45,8 +53,9 @@ def score_game(game, team_lookup, team_default, city_lookup, city_default, confi
         team_cfg["minWeight"],
     )
     game_score = (combo["teamWeight"] * team_score) + (combo["cityWeight"] * city_pts)
+    game_score = apply_season_multiplier(game_score, game.get("seasonType"), config)
 
-    return {
+    result = {
         "gameScore": round(game_score, 2),
         "teamScore": round(team_score, 2),
         "cityScore": city_pts,
@@ -54,6 +63,13 @@ def score_game(game, team_lookup, team_default, city_lookup, city_default, confi
         "awayTeamTier": away_tier,
         "cityTier": city_tier,
     }
+
+    season_type = game.get("seasonType")
+    multipliers = config.get("seasonTypeMultipliers", {})
+    if season_type and season_type in multipliers:
+        result["seasonTypeMultiplier"] = multipliers[season_type]
+
+    return result
 
 
 def score_schedule(schedule, team_tiers, city_tiers, config):
@@ -87,7 +103,7 @@ def main():
     parser.add_argument(
         "--schedule",
         type=Path,
-        default=Path("data/nba-schedule-2026-2027.json"),
+        default=Path("data/2026-2027-season/nba-schedule-2026-2027.json"),
     )
     parser.add_argument(
         "--team-tiers",
@@ -102,12 +118,12 @@ def main():
     parser.add_argument(
         "--config",
         type=Path,
-        default=Path("data/scoring-config.json"),
+        default=Path("data/2026-2027-season/scoring-config.json"),
     )
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("data/nba-schedule-2026-2027-scored.json"),
+        default=Path("data/2026-2027-season/nba-schedule-2026-2027-scored.json"),
     )
     args = parser.parse_args()
 

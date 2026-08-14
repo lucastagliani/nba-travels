@@ -1,0 +1,20 @@
+{
+  "currency": "USD",
+  "travelers": 2,
+  "travelersNote": "Costs marked per-person are multiplied by 2; hotels assume one room for the couple.",
+  "home": {
+    "city": "Porto Alegre",
+    "country": "Brazil",
+    "airport": "POA"
+  },
+  "internationalRoundTripPerPerson": 950,
+  "travel": {
+    "trainPerMile": 0.35,
+    "flightFlat": 180,
+    "drivePerMile": 0.3
+  },
+  "hotelPerNight": 220,
+  "ticketDefault": 100,
+  "ticketMarquee": 180,
+  "dailyFood": 80
+}

@@ -17,7 +17,8 @@
     "jsx": "react-jsx",
     "resolveJsonModule": true,
     "paths": {
-      "@data/*": ["../data/*"]
+      "@data/*": ["../data/*"],
+      "@season/*": ["../data/2026-2027-season/*"]
     },
 
     /* Linting */

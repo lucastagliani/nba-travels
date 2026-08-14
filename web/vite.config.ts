@@ -12,6 +12,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@data': path.resolve(rootDir, '../data'),
+      '@season': path.resolve(rootDir, '../data/2026-2027-season'),
     },
   },
 })

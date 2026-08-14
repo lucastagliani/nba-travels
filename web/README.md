@@ -32,12 +32,13 @@ Pushes to `main` deploy automatically via `.github/workflows/deploy-web.yml`.
 
 ## Features
 
-- **Map zoom & pan** — scroll to zoom, drag to pan, +/- buttons, reset
-- **Compare mode** — overlay two itineraries (amber + cyan)
-- **Distance table** — miles per travel leg with mode and hours
-- **Timeline sync** — click a day to highlight that leg on the map
-- **Tier-colored cities** — S/A/B/C markers with numbered stops
-- **Marquee games** — ⭐ on map and timeline
+- **Compare all** — table + cards for every itinerary with days/city, teams, miles, budget
+- **Trip detail** — map, calendar/timeline, budget breakdown, games list
+- **Map zoom & pan** — scroll/drag, +/- buttons, **Fit route** auto-zoom
+- **Calendar view** — month grid synced with map/timeline
+- **Budget estimates** — travel, hotels, tickets, food (see `data/budget-config.json`)
+- **Print / PDF** — printable export with full trip summary
+- **Share link** — URL preserves view, itinerary, and selected day
 
 ## Data
 

@@ -1,4 +1,4 @@
-import citiesData from '@data/cities.json'
+import citiesData from '@season/cities.json'
 import cityTiersData from '@data/city-tiers.json'
 import type { CityCoords, CityTier } from '../types'
 

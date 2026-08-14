@@ -16,6 +16,10 @@
     "teamWeight": 0.45,
     "cityWeight": 0.55
   },
+  "seasonTypeMultipliers": {
+    "Emirates NBA Cup": 1.15,
+    "NBA Cup": 1.15
+  },
   "visitedCities": {
     "penalty": false,
     "note": "Visited cities use their normal tier points; tier C cities score 1."

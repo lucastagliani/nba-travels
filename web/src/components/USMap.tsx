@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, useCallback } from 'react'
 import { geoAlbersUsa, geoPath } from 'd3-geo'
 import { select } from 'd3-selection'
 import 'd3-transition'
@@ -9,10 +9,12 @@ import type { Topology } from 'topojson-specification'
 import { getAllMappedCities, getCityCoords, projectCoord } from '../lib/cities'
 import { MODE_ICONS, TIER_COLORS, US_TOPOLOGY_URL, ZOOM_EXTENT } from '../lib/constants'
 import { cityDistanceMiles, formatMiles } from '../lib/distance'
+import { computeFitTransform } from '../lib/mapFit'
 import type { MapRouteLayer, RouteLeg } from '../types'
 
 interface USMapProps {
   layers: MapRouteLayer[]
+  autoFitRoute?: boolean
 }
 
 const WIDTH = 960
@@ -78,7 +80,7 @@ function buildSegments(
   return segments
 }
 
-export function USMap({ layers }: USMapProps) {
+export function USMap({ layers, autoFitRoute = true }: USMapProps) {
   const svgRef = useRef<SVGSVGElement>(null)
   const zoomRef = useRef<ZoomBehavior<SVGSVGElement, unknown> | null>(null)
   const [states, setStates] = useState<FeatureCollection | null>(null)
@@ -154,6 +156,33 @@ export function USMap({ layers }: USMapProps) {
     [layers, project],
   )
 
+  const fitRoute = useCallback(() => {
+    const svgEl = svgRef.current
+    const z = zoomRef.current
+    if (!svgEl || !z) return
+
+    const points: [number, number][] = []
+    for (const { stopPoints } of layerGraphics) {
+      for (const stop of stopPoints) {
+        points.push([stop.x, stop.y])
+      }
+    }
+
+    const next = computeFitTransform(points, WIDTH, HEIGHT)
+    select(svgEl).transition().duration(400).call(z.transform, next)
+  }, [layerGraphics])
+
+  useEffect(() => {
+    if (autoFitRoute && layerGraphics.some((g) => g.stopPoints.length > 0)) {
+      const timer = window.setTimeout(() => fitRoute(), 100)
+      return () => window.clearTimeout(timer)
+    }
+  }, [
+    autoFitRoute,
+    fitRoute,
+    layers.map((l) => `${l.id}:${l.route.stops.map((s) => s.city).join('>')}`).join('|'),
+  ])
+
   const zoomIn = () => {
     const svgEl = svgRef.current
     const z = zoomRef.current
@@ -193,6 +222,13 @@ export function USMap({ layers }: USMapProps) {
           aria-label="Zoom out"
         >
           −
+        </button>
+        <button
+          type="button"
+          onClick={fitRoute}
+          className="rounded-md border border-slate-600 bg-slate-950/90 px-2 py-1 text-[10px] font-medium text-slate-300 hover:bg-slate-800"
+        >
+          Fit route
         </button>
         <button
           type="button"
