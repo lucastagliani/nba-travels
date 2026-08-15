@@ -1,9 +1,10 @@
 {
   "id": "secondary",
   "seasonId": "2026-2027",
-  "name": "Secondary (draft)",
-  "description": "Placeholder for a future alternate trip — same team tiers as the season, city focus not defined yet",
-  "focus": null,
+  "name": "West Coast 2026",
+  "description": "Secondary trip — calendar 2026, team tiers only (no city scoring)",
+  "focus": "LAL, GSW, SAS and tier-A/B matchups in the west; complements the east-coast main trip",
+  "scoring": "team-only",
   "default": false,
   "status": "draft"
 }

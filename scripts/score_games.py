@@ -150,16 +150,18 @@ def main():
     schedule_path = args.schedule or season_dir / "nba-schedule-2026-2027.json"
     team_tiers_path = args.team_tiers or season_dir / "team-tiers.json"
     city_tiers_path = args.city_tiers or trip_dir / "city-tiers.json"
-    config_path = args.config or season_dir / "scoring-config.json"
-    output_path = args.output or (
-        season_dir / "nba-schedule-2026-2027-scored.json"
-        if args.trip == "east-coast"
-        else trip_dir / "nba-schedule-scored.json"
+    trip_config_path = trip_dir / "scoring-config.json"
+    config_path = args.config or (
+        trip_config_path if trip_config_path.exists() else season_dir / "scoring-config.json"
     )
+    output_path = args.output or trip_dir / "nba-schedule-scored.json"
 
     schedule = json.loads(schedule_path.read_text())
     team_tiers = json.loads(team_tiers_path.read_text())
-    city_tiers = json.loads(city_tiers_path.read_text())
+    if city_tiers_path.exists():
+        city_tiers = json.loads(city_tiers_path.read_text())
+    else:
+        city_tiers = {"description": "No city tiers — all cities default tier C", "defaultTier": "C", "tiers": {}}
     config = json.loads(config_path.read_text())
 
     output = score_schedule(schedule, team_tiers, city_tiers, config)
@@ -171,7 +173,9 @@ def main():
         f.write("\n")
 
     top = sorted(output["games"], key=lambda g: g["interest"]["gameScore"], reverse=True)[:5]
-    print(f"Scored for trip '{args.trip}' using {city_tiers_path.name}")
+    print(f"Scored for trip '{args.trip}' using {config_path.name}" + (
+        f" + {city_tiers_path.name}" if city_tiers_path.exists() else " (no city tiers — default C)"
+    ))
     print(f"Wrote {output['gameCount']} scored games to {output_path}")
     print("Top 5 by gameScore:")
     for game in top:

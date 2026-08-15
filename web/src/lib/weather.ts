@@ -1,4 +1,4 @@
-import weatherData from '@trip/weather-normals.json'
+import { getActiveTripId, getWeatherDoc } from './tripData'
 import { getCityCoords } from './cities'
 
 interface WeatherRecord {
@@ -11,17 +11,6 @@ interface WeatherRecord {
   condition: string
   sampleYears: number
 }
-
-interface WeatherNormalsDoc {
-  scope?: {
-    cities: string[]
-    months: number[]
-    monthLabels: string[]
-  }
-  entries: Record<string, Record<string, WeatherRecord>>
-}
-
-const doc = weatherData as WeatherNormalsDoc
 
 export interface DayWeather {
   city: string
@@ -68,10 +57,13 @@ function toCelsius(record: WeatherRecord, kind: 'high' | 'low'): number {
 }
 
 export function getWeatherForDay(city: string, date: string): DayWeather | null {
+  const doc = getWeatherDoc(getActiveTripId())
+  if (!doc) return null
+
   const key = weatherKey(date)
   const cityEntries = doc.entries[city]
   if (!cityEntries) return null
-  const record = cityEntries[key] ?? cityEntries[date]
+  const record = (cityEntries[key] ?? cityEntries[date]) as WeatherRecord | undefined
   if (!record) return null
 
   return {

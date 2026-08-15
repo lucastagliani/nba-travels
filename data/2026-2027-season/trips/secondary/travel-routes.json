@@ -1,0 +1,66 @@
+{
+  "description": "Preferred inter-city travel for the West Coast 2026 secondary trip.",
+  "routes": {
+    "Los Angeles-San Francisco": {
+      "mode": "flight",
+      "hours": 1.25,
+      "operator": "LAX/SFO or BUR/OAK shuttles",
+      "notes": "~1h block; frequent daily nonstops"
+    },
+    "San Francisco-Los Angeles": {
+      "mode": "flight",
+      "hours": 1.25
+    },
+    "Los Angeles-Inglewood": {
+      "mode": "drive",
+      "hours": 0.5,
+      "notes": "Metro/rideshare to Intuit Dome"
+    },
+    "Inglewood-Los Angeles": {
+      "mode": "drive",
+      "hours": 0.5
+    },
+    "Los Angeles-Sacramento": {
+      "mode": "flight",
+      "hours": 1.25,
+      "operator": "LAX ↔ SMF nonstops"
+    },
+    "Sacramento-Los Angeles": {
+      "mode": "flight",
+      "hours": 1.25
+    },
+    "San Antonio-Houston": {
+      "mode": "drive",
+      "hours": 3.0,
+      "notes": "I-10 west; or short flight SAT ↔ IAH"
+    },
+    "Houston-San Antonio": {
+      "mode": "drive",
+      "hours": 3.0
+    },
+    "Houston-New Orleans": {
+      "mode": "drive",
+      "hours": 5.5,
+      "notes": "I-10 east; or MSY nonstop from IAH"
+    },
+    "New Orleans-Houston": {
+      "mode": "drive",
+      "hours": 5.5
+    },
+    "Minneapolis-Denver": {
+      "mode": "flight",
+      "hours": 2.0,
+      "operator": "MSP ↔ DEN nonstops"
+    },
+    "Denver-Los Angeles": {
+      "mode": "flight",
+      "hours": 2.5,
+      "operator": "DEN ↔ LAX nonstops"
+    },
+    "Los Angeles-Minneapolis": {
+      "mode": "flight",
+      "hours": 3.5,
+      "operator": "LAX ↔ MSP"
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "Los Angeles": {
+    "lat": 34.043,
+    "lng": -118.2672,
+    "arena": "Crypto.com Arena",
+    "neighborhood": "Downtown LA",
+    "state": "CA",
+    "timezone": "America/Los_Angeles",
+    "airport": "LAX",
+    "airports": ["LAX", "BUR", "SNA"],
+    "trainStation": "Union Station"
+  },
+  "Inglewood": {
+    "lat": 33.958,
+    "lng": -118.341,
+    "arena": "Intuit Dome",
+    "neighborhood": "Inglewood",
+    "state": "CA",
+    "timezone": "America/Los_Angeles",
+    "airport": "LAX",
+    "airports": ["LAX"],
+    "trainStation": "Aviation/LAX (Metro)"
+  },
+  "San Francisco": {
+    "lat": 37.768,
+    "lng": -122.387,
+    "arena": "Chase Center",
+    "neighborhood": "Mission Bay",
+    "state": "CA",
+    "timezone": "America/Los_Angeles",
+    "airport": "SFO",
+    "airports": ["SFO", "OAK", "SJC"]
+  },
+  "Sacramento": {
+    "lat": 38.5802,
+    "lng": -121.4997,
+    "arena": "Golden 1 Center",
+    "neighborhood": "Downtown Sacramento",
+    "state": "CA",
+    "timezone": "America/Los_Angeles",
+    "airport": "SMF",
+    "airports": ["SMF"],
+    "trainStation": "Sacramento Valley Station"
+  },
+  "San Antonio": {
+    "lat": 29.427,
+    "lng": -98.437,
+    "arena": "Frost Bank Center",
+    "neighborhood": "Downtown San Antonio",
+    "state": "TX",
+    "timezone": "America/Chicago",
+    "airport": "SAT",
+    "airports": ["SAT"]
+  },
+  "Houston": {
+    "lat": 29.7508,
+    "lng": -95.3621,
+    "arena": "Toyota Center",
+    "neighborhood": "Downtown Houston",
+    "state": "TX",
+    "timezone": "America/Chicago",
+    "airport": "IAH",
+    "airports": ["IAH", "HOU"]
+  },
+  "New Orleans": {
+    "lat": 29.949,
+    "lng": -90.082,
+    "arena": "Smoothie King Center",
+    "neighborhood": "Central Business District",
+    "state": "LA",
+    "timezone": "America/Chicago",
+    "airport": "MSY",
+    "airports": ["MSY"]
+  },
+  "Minneapolis": {
+    "lat": 44.9795,
+    "lng": -93.276,
+    "arena": "Target Center",
+    "neighborhood": "Downtown Minneapolis",
+    "state": "MN",
+    "timezone": "America/Chicago",
+    "airport": "MSP",
+    "airports": ["MSP"]
+  },
+  "Denver": {
+    "lat": 39.7487,
+    "lng": -105.0077,
+    "arena": "Ball Arena",
+    "neighborhood": "LoDo",
+    "state": "CO",
+    "timezone": "America/Denver",
+    "airport": "DEN",
+    "airports": ["DEN"],
+    "trainStation": "Union Station"
+  }
+}

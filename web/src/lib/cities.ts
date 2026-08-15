@@ -1,28 +1,21 @@
-import citiesData from '@trip/cities.json'
-import cityTiersData from '@trip/city-tiers.json'
-import type { CityCoords, CityTier } from '../types'
+import type { CityTier } from '../types'
+import {
+  getActiveTripId,
+  getAllMappedCities as getAllMappedCitiesForTrip,
+  getCityCoords as getCityCoordsForTrip,
+  getCityTier as getCityTierForTrip,
+} from './tripData'
 
-const cities = citiesData as Record<string, CityCoords>
-
-const tierLookup: Record<string, CityTier> = {}
-for (const [tier, entries] of Object.entries(cityTiersData.tiers)) {
-  for (const entry of entries as { city: string }[]) {
-    tierLookup[entry.city] = tier as CityTier
-  }
-}
-
-const defaultTier = (cityTiersData.defaultTier ?? 'C') as CityTier
-
-export function getCityCoords(city: string): CityCoords | null {
-  return cities[city] ?? null
+export function getCityCoords(city: string) {
+  return getCityCoordsForTrip(city, getActiveTripId())
 }
 
 export function getCityTier(city: string): CityTier {
-  return tierLookup[city] ?? defaultTier
+  return getCityTierForTrip(city, getActiveTripId())
 }
 
 export function getAllMappedCities(): string[] {
-  return Object.keys(cities)
+  return getAllMappedCitiesForTrip(getActiveTripId())
 }
 
 export function projectCoord(

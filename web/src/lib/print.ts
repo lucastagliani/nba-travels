@@ -1,10 +1,12 @@
 import type { ItineraryOption } from '../types'
 import { analyzeItinerary, formatCurrency } from './itineraryStats'
 
-export function buildShareUrl(optionId: string, day?: number | null): string {
+export function buildShareUrl(optionId: string, day?: number | null, trip?: string | null): string {
   const url = new URL(window.location.href)
   url.searchParams.set('view', 'detail')
   url.searchParams.set('id', optionId)
+  if (trip) url.searchParams.set('trip', trip)
+  else url.searchParams.delete('trip')
   if (day != null) {
     url.searchParams.set('day', String(day))
   } else {
@@ -17,6 +19,7 @@ export function readUrlState(): {
   view: 'compare' | 'detail'
   id: string | null
   day: number | null
+  trip: string | null
 } {
   const params = new URLSearchParams(window.location.search)
   const viewParam = params.get('view')
@@ -24,7 +27,7 @@ export function readUrlState(): {
   const id = params.get('id')
   const dayRaw = params.get('day')
   const day = dayRaw ? Number(dayRaw) : null
-  return { view, id, day: Number.isFinite(day) ? day : null }
+  return { view, id, day: Number.isFinite(day) ? day : null, trip: params.get('trip') }
 }
 
 export function printItinerary(option: ItineraryOption): void {

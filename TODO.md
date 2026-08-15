@@ -29,11 +29,14 @@ data/
         itinerary-options.json
         travel-routes.json
         weather-normals.json
-      secondary/                  # draft alternate trip
+      secondary/                  # West Coast 2026 (team-only scoring)
         trip.json
-        city-tiers.json
+        scoring-config.json
         cities.json
-        itinerary-options.json    # empty — TBD
+        itinerary-options.json
+        travel-routes.json
+        weather-normals.json
+        nba-schedule-scored.json
 ```
 - [x] Interactive map UI (zoom, pan, fit route)
 - [x] Compare all itineraries screen
@@ -110,7 +113,6 @@ data/
 
 - Budget assumptions live in `data/budget-config.json` — tune there first.
 - **Season** (`data/2026-2027-season/`): schedule, team tiers, scoring config.
-- **Trip** (`data/2026-2027-season/trips/<id>/`): city tiers, cities, itineraries, weather, routes.
-- Active trip in the web app: `@trip` → `trips/east-coast` (change alias to switch trips).
-- Refresh weather: `python3 scripts/fetch_weather.py --trip east-coast`
-- Re-score per trip: `python3 scripts/score_games.py --trip east-coast`
+- **Trip** (`data/2026-2027-season/trips/<id>/`): cities, itineraries, weather, routes, optional city tiers, per-trip scored schedule.
+- Switch trips in the web app header or `?trip=secondary` in the URL.
+- Re-score per trip: `python3 scripts/score_games.py --trip east-coast` (or `--trip secondary`)

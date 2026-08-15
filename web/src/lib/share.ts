@@ -1,4 +1,5 @@
 import { buildShareUrl } from './print'
+import { DEFAULT_TRIP_ID, getActiveTripId } from './tripData'
 
 export interface ShareResult {
   method: 'share' | 'copy' | 'prompt'
@@ -9,7 +10,8 @@ export async function shareItinerary(
   optionId: string,
   activeDay?: number | null,
 ): Promise<ShareResult> {
-  const url = buildShareUrl(optionId, activeDay)
+  const trip = getActiveTripId()
+  const url = buildShareUrl(optionId, activeDay, trip !== DEFAULT_TRIP_ID ? trip : null)
   const title = `NBA Travels — ${optionName}`
   const text = `Check out this NBA trip itinerary: ${optionName}`
 

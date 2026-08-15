@@ -1,0 +1,23 @@
+{
+  "description": "Team-only scoring for the secondary trip (no city preference).",
+  "tierPoints": {
+    "S": 5,
+    "A": 3,
+    "B": 2,
+    "C": 1
+  },
+  "teamScore": {
+    "method": "blend",
+    "maxWeight": 0.7,
+    "minWeight": 0.3
+  },
+  "combination": {
+    "method": "weighted_sum",
+    "teamWeight": 1.0,
+    "cityWeight": 0
+  },
+  "seasonTypeMultipliers": {
+    "Emirates NBA Cup": 1.15,
+    "NBA Cup": 1.15
+  }
+}

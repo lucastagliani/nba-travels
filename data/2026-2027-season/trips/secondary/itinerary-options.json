@@ -1,11 +1,677 @@
 {
-  "description": "Itinerary options for the secondary trip — not yet planned.",
+  "description": "Secondary trip itineraries \u2014 calendar 2026, team-only interest scores (no city tiers).",
   "constraints": {
     "maxDays": 12,
     "sameDayTravelAndGame": true,
-    "focus": "Draft trip — city tiers defined, itineraries TBD"
+    "focus": "West / Southwest; team tiers only; complements east-coast main trip",
+    "scoring": "team-only"
   },
-  "travelAssumptions": {},
-  "options": [],
-  "comparison": []
+  "travelAssumptions": {
+    "Los Angeles-San Francisco": {
+      "hours": 1.25,
+      "mode": "flight"
+    },
+    "San Francisco-Los Angeles": {
+      "hours": 1.25,
+      "mode": "flight"
+    },
+    "Los Angeles-Inglewood": {
+      "hours": 0.5,
+      "mode": "drive"
+    },
+    "San Antonio-Houston": {
+      "hours": 3.0,
+      "mode": "drive"
+    },
+    "Houston-New Orleans": {
+      "hours": 5.5,
+      "mode": "drive"
+    },
+    "Minneapolis-Denver": {
+      "hours": 2.0,
+      "mode": "flight"
+    },
+    "Denver-Los Angeles": {
+      "hours": 2.5,
+      "mode": "flight"
+    }
+  },
+  "options": [
+    {
+      "id": "california-cup-run",
+      "name": "California Cup Run",
+      "recommended": true,
+      "recommendedFor": "Team-only scoring \u00b7 LAL + GSW opener and NBA Cup in SF \u00b7 LA hub, calendar 2026",
+      "startDate": "2026-10-19",
+      "endDate": "2026-11-01",
+      "cities": [
+        "Los Angeles",
+        "San Francisco",
+        "Inglewood"
+      ],
+      "marqueeGames": [
+        "2026-10-21 GSW@LAL",
+        "2026-10-30 LAL@GSW"
+      ],
+      "days": [
+        {
+          "day": 1,
+          "date": "2026-10-19",
+          "weekday": "Mon",
+          "location": "Los Angeles",
+          "travel": {
+            "description": "Fly in \u2192 Los Angeles"
+          },
+          "game": null
+        },
+        {
+          "day": 2,
+          "date": "2026-10-20",
+          "weekday": "Tue",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": null,
+          "notes": "Rest / explore LA"
+        },
+        {
+          "day": 3,
+          "date": "2026-10-21",
+          "weekday": "Wed",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": {
+            "matchup": "GSW @ LAL",
+            "timeLocal": "19:00",
+            "arenaCity": "Los Angeles",
+            "interestScore": 4.4,
+            "marquee": true
+          }
+        },
+        {
+          "day": 4,
+          "date": "2026-10-22",
+          "weekday": "Thu",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 5,
+          "date": "2026-10-23",
+          "weekday": "Fri",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": {
+            "matchup": "LAC @ LAL",
+            "timeLocal": "19:00",
+            "arenaCity": "Los Angeles",
+            "interestScore": 3.8
+          }
+        },
+        {
+          "day": 6,
+          "date": "2026-10-24",
+          "weekday": "Sat",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 7,
+          "date": "2026-10-25",
+          "weekday": "Sun",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": null,
+          "notes": "Rest day"
+        },
+        {
+          "day": 8,
+          "date": "2026-10-26",
+          "weekday": "Mon",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 9,
+          "date": "2026-10-28",
+          "weekday": "Wed",
+          "location": "Inglewood",
+          "travel": {
+            "from": "Los Angeles",
+            "to": "Inglewood",
+            "hours": 0.5,
+            "mode": "drive"
+          },
+          "game": {
+            "matchup": "LAL @ LAC",
+            "timeLocal": "19:30",
+            "arenaCity": "Inglewood",
+            "interestScore": 3.8
+          }
+        },
+        {
+          "day": 10,
+          "date": "2026-10-29",
+          "weekday": "Thu",
+          "location": "San Francisco",
+          "travel": {
+            "from": "Los Angeles",
+            "to": "San Francisco",
+            "hours": 1.25,
+            "mode": "flight",
+            "notes": "Evening flight for Cup game"
+          },
+          "game": null
+        },
+        {
+          "day": 11,
+          "date": "2026-10-30",
+          "weekday": "Fri",
+          "location": "San Francisco",
+          "travel": null,
+          "game": {
+            "matchup": "LAL @ GSW",
+            "timeLocal": "19:00",
+            "arenaCity": "San Francisco",
+            "interestScore": 5.06,
+            "marquee": true
+          }
+        },
+        {
+          "day": 12,
+          "date": "2026-11-01",
+          "weekday": "Sun",
+          "location": "Los Angeles",
+          "travel": {
+            "from": "San Francisco",
+            "to": "Los Angeles",
+            "hours": 1.25,
+            "mode": "flight",
+            "notes": "Morning flight back"
+          },
+          "game": {
+            "matchup": "TOR @ LAL",
+            "timeLocal": "18:00",
+            "arenaCity": "Los Angeles",
+            "interestScore": 3.8
+          }
+        }
+      ],
+      "gameCount": 5,
+      "totalInterestScore": 20.86,
+      "averageInterestScore": 4.17
+    },
+    {
+      "id": "quick-la-double",
+      "name": "Quick LA Double",
+      "recommendedFor": "Minimal PTO \u2014 three strong team-score games, LA + one night in SF",
+      "startDate": "2026-10-19",
+      "endDate": "2026-10-31",
+      "cities": [
+        "Los Angeles",
+        "San Francisco",
+        "Inglewood"
+      ],
+      "marqueeGames": [
+        "2026-10-21 GSW@LAL",
+        "2026-10-30 LAL@GSW"
+      ],
+      "days": [
+        {
+          "day": 1,
+          "date": "2026-10-19",
+          "weekday": "Mon",
+          "location": "Los Angeles",
+          "travel": {
+            "description": "Fly in \u2192 Los Angeles"
+          },
+          "game": null
+        },
+        {
+          "day": 2,
+          "date": "2026-10-20",
+          "weekday": "Tue",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 3,
+          "date": "2026-10-21",
+          "weekday": "Wed",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": {
+            "matchup": "GSW @ LAL",
+            "timeLocal": "19:00",
+            "arenaCity": "Los Angeles",
+            "interestScore": 4.4,
+            "marquee": true
+          }
+        },
+        {
+          "day": 4,
+          "date": "2026-10-22",
+          "weekday": "Thu",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 5,
+          "date": "2026-10-23",
+          "weekday": "Fri",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 6,
+          "date": "2026-10-24",
+          "weekday": "Sat",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 7,
+          "date": "2026-10-25",
+          "weekday": "Sun",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 8,
+          "date": "2026-10-28",
+          "weekday": "Wed",
+          "location": "Inglewood",
+          "travel": {
+            "from": "Los Angeles",
+            "to": "Inglewood",
+            "hours": 0.5,
+            "mode": "drive"
+          },
+          "game": {
+            "matchup": "LAL @ LAC",
+            "timeLocal": "19:30",
+            "arenaCity": "Inglewood",
+            "interestScore": 3.8
+          }
+        },
+        {
+          "day": 9,
+          "date": "2026-10-29",
+          "weekday": "Thu",
+          "location": "San Francisco",
+          "travel": {
+            "from": "Los Angeles",
+            "to": "San Francisco",
+            "hours": 1.25,
+            "mode": "flight"
+          },
+          "game": null
+        },
+        {
+          "day": 10,
+          "date": "2026-10-30",
+          "weekday": "Fri",
+          "location": "San Francisco",
+          "travel": null,
+          "game": {
+            "matchup": "LAL @ GSW",
+            "timeLocal": "19:00",
+            "arenaCity": "San Francisco",
+            "interestScore": 5.06,
+            "marquee": true
+          }
+        },
+        {
+          "day": 11,
+          "date": "2026-10-31",
+          "weekday": "Sat",
+          "location": "San Francisco",
+          "travel": null,
+          "game": null,
+          "notes": "Fly home from SFO or LAX"
+        }
+      ],
+      "gameCount": 3,
+      "totalInterestScore": 13.26,
+      "averageInterestScore": 4.42
+    },
+    {
+      "id": "texas-thanksgiving-cup",
+      "name": "Texas Thanksgiving Cup",
+      "recommendedFor": "Short trip anchored on LAL @ SAS NBA Cup; Texas triangle",
+      "startDate": "2026-11-25",
+      "endDate": "2026-12-02",
+      "cities": [
+        "San Antonio",
+        "Houston",
+        "New Orleans"
+      ],
+      "marqueeGames": [
+        "2026-11-27 LAL@SAS"
+      ],
+      "days": [
+        {
+          "day": 1,
+          "date": "2026-11-25",
+          "weekday": "Wed",
+          "location": "San Antonio",
+          "travel": {
+            "description": "Fly in \u2192 San Antonio (Thanksgiving)"
+          },
+          "game": null
+        },
+        {
+          "day": 2,
+          "date": "2026-11-27",
+          "weekday": "Fri",
+          "location": "San Antonio",
+          "travel": null,
+          "game": {
+            "matchup": "LAL @ SAS",
+            "timeLocal": "20:30",
+            "arenaCity": "San Antonio",
+            "interestScore": 5.06,
+            "marquee": true
+          }
+        },
+        {
+          "day": 3,
+          "date": "2026-11-28",
+          "weekday": "Sat",
+          "location": "Houston",
+          "travel": {
+            "from": "San Antonio",
+            "to": "Houston",
+            "hours": 3.0,
+            "mode": "drive"
+          },
+          "game": {
+            "matchup": "PHI @ HOU",
+            "timeLocal": "19:30",
+            "arenaCity": "Houston",
+            "interestScore": 3.8
+          }
+        },
+        {
+          "day": 4,
+          "date": "2026-11-29",
+          "weekday": "Sun",
+          "location": "Houston",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 5,
+          "date": "2026-11-30",
+          "weekday": "Mon",
+          "location": "Houston",
+          "travel": null,
+          "game": {
+            "matchup": "LAL @ HOU",
+            "timeLocal": "18:30",
+            "arenaCity": "Houston",
+            "interestScore": 3.8
+          }
+        },
+        {
+          "day": 6,
+          "date": "2026-12-02",
+          "weekday": "Wed",
+          "location": "New Orleans",
+          "travel": {
+            "from": "Houston",
+            "to": "New Orleans",
+            "hours": 5.5,
+            "mode": "drive",
+            "notes": "Or fly IAH \u2192 MSY"
+          },
+          "game": {
+            "matchup": "LAL @ NOP",
+            "timeLocal": "19:00",
+            "arenaCity": "New Orleans",
+            "interestScore": 3.8
+          }
+        }
+      ],
+      "gameCount": 4,
+      "totalInterestScore": 16.46,
+      "averageInterestScore": 4.12
+    },
+    {
+      "id": "christmas-west",
+      "name": "Christmas West",
+      "recommendedFor": "Holiday marquee PHI @ LAL on Christmas; DEN + MIN warm-up games",
+      "startDate": "2026-12-14",
+      "endDate": "2026-12-27",
+      "cities": [
+        "Minneapolis",
+        "Denver",
+        "Los Angeles",
+        "Inglewood"
+      ],
+      "marqueeGames": [
+        "2026-12-25 PHI@LAL"
+      ],
+      "days": [
+        {
+          "day": 1,
+          "date": "2026-12-14",
+          "weekday": "Mon",
+          "location": "Minneapolis",
+          "travel": {
+            "description": "Fly in \u2192 Minneapolis"
+          },
+          "game": null
+        },
+        {
+          "day": 2,
+          "date": "2026-12-15",
+          "weekday": "Tue",
+          "location": "Minneapolis",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 3,
+          "date": "2026-12-16",
+          "weekday": "Wed",
+          "location": "Minneapolis",
+          "travel": null,
+          "game": {
+            "matchup": "LAL @ MIN",
+            "timeLocal": "20:30",
+            "arenaCity": "Minneapolis",
+            "interestScore": 4.1
+          }
+        },
+        {
+          "day": 4,
+          "date": "2026-12-17",
+          "weekday": "Thu",
+          "location": "Minneapolis",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 5,
+          "date": "2026-12-18",
+          "weekday": "Fri",
+          "location": "Minneapolis",
+          "travel": null,
+          "game": {
+            "matchup": "LAL @ MIN",
+            "timeLocal": "19:00",
+            "arenaCity": "Minneapolis",
+            "interestScore": 4.1
+          }
+        },
+        {
+          "day": 6,
+          "date": "2026-12-19",
+          "weekday": "Sat",
+          "location": "Denver",
+          "travel": {
+            "from": "Minneapolis",
+            "to": "Denver",
+            "hours": 2.0,
+            "mode": "flight"
+          },
+          "game": {
+            "matchup": "LAL @ DEN",
+            "timeLocal": "19:00",
+            "arenaCity": "Denver",
+            "interestScore": 4.1
+          }
+        },
+        {
+          "day": 7,
+          "date": "2026-12-20",
+          "weekday": "Sun",
+          "location": "Los Angeles",
+          "travel": {
+            "from": "Denver",
+            "to": "Los Angeles",
+            "hours": 2.5,
+            "mode": "flight"
+          },
+          "game": null
+        },
+        {
+          "day": 8,
+          "date": "2026-12-21",
+          "weekday": "Mon",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": {
+            "matchup": "IND @ LAL",
+            "timeLocal": "19:00",
+            "arenaCity": "Los Angeles",
+            "interestScore": 4.1
+          }
+        },
+        {
+          "day": 9,
+          "date": "2026-12-22",
+          "weekday": "Tue",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": null
+        },
+        {
+          "day": 10,
+          "date": "2026-12-23",
+          "weekday": "Wed",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": {
+            "matchup": "DEN @ LAL",
+            "timeLocal": "19:00",
+            "arenaCity": "Los Angeles",
+            "interestScore": 4.1
+          }
+        },
+        {
+          "day": 11,
+          "date": "2026-12-25",
+          "weekday": "Fri",
+          "location": "Los Angeles",
+          "travel": null,
+          "game": {
+            "matchup": "PHI @ LAL",
+            "timeLocal": "14:00",
+            "arenaCity": "Los Angeles",
+            "interestScore": 5.0,
+            "marquee": true
+          }
+        },
+        {
+          "day": 12,
+          "date": "2026-12-27",
+          "weekday": "Sun",
+          "location": "Inglewood",
+          "travel": {
+            "from": "Los Angeles",
+            "to": "Inglewood",
+            "hours": 0.5,
+            "mode": "drive"
+          },
+          "game": {
+            "matchup": "PHI @ LAC",
+            "timeLocal": "18:00",
+            "arenaCity": "Inglewood",
+            "interestScore": 3.8
+          }
+        }
+      ],
+      "gameCount": 7,
+      "totalInterestScore": 29.3,
+      "averageInterestScore": 4.19
+    }
+  ],
+  "comparison": [
+    {
+      "id": "california-cup-run",
+      "when": "Oct 2026",
+      "cities": [
+        "LA",
+        "SF"
+      ],
+      "games": 5,
+      "averageScore": 4.17,
+      "marqueeGames": [
+        "GSW@LAL",
+        "LAL@GSW"
+      ],
+      "recommended": true
+    },
+    {
+      "id": "quick-la-double",
+      "when": "Oct 2026",
+      "cities": [
+        "LA",
+        "SF"
+      ],
+      "games": 3,
+      "averageScore": 4.42,
+      "marqueeGames": [
+        "GSW@LAL",
+        "LAL@GSW"
+      ]
+    },
+    {
+      "id": "texas-thanksgiving-cup",
+      "when": "Nov\u2013Dec 2026",
+      "cities": [
+        "San Antonio",
+        "Houston",
+        "NOLA"
+      ],
+      "games": 4,
+      "averageScore": 4.12,
+      "marqueeGames": [
+        "LAL@SAS"
+      ]
+    },
+    {
+      "id": "christmas-west",
+      "when": "Dec 2026",
+      "cities": [
+        "Minneapolis",
+        "Denver",
+        "LA"
+      ],
+      "games": 7,
+      "averageScore": 4.19,
+      "marqueeGames": [
+        "PHI@LAL"
+      ]
+    }
+  ]
 }
