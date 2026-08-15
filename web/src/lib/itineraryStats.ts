@@ -1,5 +1,5 @@
 import budgetConfig from '@data/budget-config.json'
-import teamTiersData from '@data/team-tiers.json'
+import teamTiersData from '@season/team-tiers.json'
 import type { Day, Game, ItineraryOption, ParsedRoute } from '../types'
 import { extractGames } from './games'
 import { parseItineraryRoute } from './routeParser'

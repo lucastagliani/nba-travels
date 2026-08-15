@@ -1,5 +1,5 @@
 {
-  "description": "Team preference tiers for ranking game interest on the 2026-27 trip.",
+  "description": "Team preference tiers for the 2026-27 season (shared across all trips).",
   "defaultTier": "C",
   "tiers": {
     "S": [

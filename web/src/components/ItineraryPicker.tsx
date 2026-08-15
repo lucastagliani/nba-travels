@@ -10,11 +10,11 @@ interface ItineraryPickerProps {
 export function ItineraryPicker({ options, selectedId, onSelect }: ItineraryPickerProps) {
   return (
     <label className="block lg:hidden">
-      <span className="mb-1.5 block text-xs font-medium text-slate-500">Itinerary</span>
+      <span className="mb-1.5 block text-xs font-medium text-subtle">Itinerary</span>
       <select
         value={selectedId}
         onChange={(e) => onSelect(e.target.value)}
-        className="min-h-[44px] w-full rounded-lg border border-slate-600 bg-slate-900 px-3 py-2.5 text-sm text-slate-100"
+        className="min-h-[44px] w-full rounded-lg border border-strong bg-input px-3 py-2.5 text-sm text-fg"
       >
         {options.map((option) => (
           <option key={option.id} value={option.id}>

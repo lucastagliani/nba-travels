@@ -1,4 +1,4 @@
-import weatherData from '@season/weather-normals.json'
+import weatherData from '@trip/weather-normals.json'
 import { getCityCoords } from './cities'
 
 interface WeatherRecord {

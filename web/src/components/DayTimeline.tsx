@@ -13,11 +13,9 @@ interface DayTimelineProps {
 
 export function DayTimeline({ days, legs, activeDay, onSelectDay }: DayTimelineProps) {
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center justify-between">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
-          Day by day
-        </h2>
+    <div className="rounded-lg border border-border bg-card p-4">
+      <div className="mb-3 flex items-center justify-between">
+        <h3 className="text-sm font-semibold text-fg">Timeline</h3>
         {activeDay !== null && (
           <button
             type="button"
@@ -29,7 +27,7 @@ export function DayTimeline({ days, legs, activeDay, onSelectDay }: DayTimelineP
         )}
       </div>
 
-      <div className="max-h-[420px] space-y-2 overflow-y-auto pr-1">
+      <div className="max-h-[480px] space-y-2 overflow-y-auto pr-1">
         {days.map((day) => {
           const selected = activeDay === day.day
           const dayLegs = getLegsForDay(legs, day.day)
@@ -43,17 +41,17 @@ export function DayTimeline({ days, legs, activeDay, onSelectDay }: DayTimelineP
               className={`w-full rounded-lg border px-3 py-2.5 text-left transition ${
                 selected
                   ? 'border-amber-500/60 bg-amber-500/10'
-                  : 'border-slate-700/80 bg-slate-800/30 hover:border-slate-600'
+                  : 'border-border/80 bg-muted/30 hover:border-strong'
               }`}
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="text-sm font-semibold text-slate-100">
+                <span className="text-sm font-semibold text-fg">
                   Day {day.day}
-                  <span className="ml-2 font-normal text-slate-400">
+                  <span className="ml-2 font-normal text-muted-fg">
                     {day.weekday} · {day.date}
                   </span>
                 </span>
-                <span className="text-xs font-medium text-slate-300">{day.location}</span>
+                <span className="text-xs font-medium text-fg-soft">{day.location}</span>
               </div>
 
               <WeatherBadge
@@ -62,11 +60,11 @@ export function DayTimeline({ days, legs, activeDay, onSelectDay }: DayTimelineP
               />
 
               {cityMeta && (
-                <p className="mt-0.5 text-[10px] text-slate-600">{cityMeta}</p>
+                <p className="mt-0.5 text-[10px] text-subtle">{cityMeta}</p>
               )}
 
               {dayLegs.length > 0 && (
-                <div className="mt-1.5 text-xs text-slate-400">
+                <div className="mt-1.5 text-xs text-muted-fg">
                   {dayLegs.map((leg) => (
                     <span key={`${leg.from}-${leg.to}`} className="mr-2">
                       {MODE_ICONS[leg.mode ?? ''] ?? '→'} {leg.from} → {leg.to}
@@ -77,7 +75,7 @@ export function DayTimeline({ days, legs, activeDay, onSelectDay }: DayTimelineP
               )}
 
               {day.travel?.description && !dayLegs.length && (
-                <p className="mt-1 text-xs text-slate-500">{day.travel.description}</p>
+                <p className="mt-1 text-xs text-subtle">{day.travel.description}</p>
               )}
 
               {day.game && (
@@ -85,7 +83,7 @@ export function DayTimeline({ days, legs, activeDay, onSelectDay }: DayTimelineP
                   className={`mt-2 rounded-md px-2 py-1.5 text-xs ${
                     day.game.marquee
                       ? 'bg-amber-500/15 text-amber-100'
-                      : 'bg-slate-700/50 text-slate-200'
+                      : 'bg-elevated/50 text-fg'
                   }`}
                 >
                   {day.game.marquee && '⭐ '}
@@ -98,7 +96,7 @@ export function DayTimeline({ days, legs, activeDay, onSelectDay }: DayTimelineP
               )}
 
               {!day.game && day.notes && (
-                <p className="mt-1.5 text-xs italic text-slate-500">{day.notes}</p>
+                <p className="mt-1.5 text-xs italic text-subtle">{day.notes}</p>
               )}
             </button>
           )

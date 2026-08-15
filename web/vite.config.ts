@@ -13,6 +13,7 @@ export default defineConfig({
     alias: {
       '@data': path.resolve(rootDir, '../data'),
       '@season': path.resolve(rootDir, '../data/2026-2027-season'),
+      '@trip': path.resolve(rootDir, '../data/2026-2027-season/trips/east-coast'),
     },
   },
 })

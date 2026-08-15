@@ -44,24 +44,24 @@ export function BudgetBreakdown({ budget, compact = false }: BudgetBreakdownProp
   ]
 
   return (
-    <div className="rounded-lg border border-slate-700 bg-slate-900/50 p-4">
+    <div className="rounded-lg border border-border bg-card p-4">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <h3 className="text-sm font-semibold text-slate-200">
+        <h3 className="text-sm font-semibold text-fg">
           Budget estimate · {budget.travelers} travelers
         </h3>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-subtle">
           {budget.tripDays} days · {budget.gameCount} games
         </p>
       </div>
 
       <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {rows.map((row) => (
-          <div key={row.label} className="rounded-md bg-slate-800/60 px-3 py-2.5">
-            <p className="text-[10px] uppercase tracking-wide text-slate-500">{row.label}</p>
-            <p className="text-sm font-medium text-slate-200">
+          <div key={row.label} className="rounded-md bg-muted/60 px-3 py-2.5">
+            <p className="text-[10px] uppercase tracking-wide text-subtle">{row.label}</p>
+            <p className="text-sm font-medium text-fg">
               {formatCurrency(row.value, budget.currency)}
             </p>
-            <p className="text-[10px] text-slate-600">{row.note}</p>
+            <p className="text-[10px] text-subtle">{row.note}</p>
           </div>
         ))}
         <div className="rounded-md border border-amber-500/30 bg-amber-500/10 px-3 py-2.5 sm:col-span-2 lg:col-span-1">
@@ -69,7 +69,7 @@ export function BudgetBreakdown({ budget, compact = false }: BudgetBreakdownProp
           <p className="text-lg font-semibold text-amber-300">
             {formatCurrency(budget.total, budget.currency)}
           </p>
-          <p className="text-[10px] text-slate-600">Approximate · see budget-config.json</p>
+          <p className="text-[10px] text-subtle">Approximate · see budget-config.json</p>
         </div>
       </div>
     </div>

@@ -79,7 +79,7 @@ function cellIndicators(trip: Day) {
   const hasTravel = Boolean(trip.travel?.from && trip.travel?.to)
   if (hasGame) return { dot: 'bg-amber-400', title: `${trip.game!.matchup} · ${trip.location}` }
   if (hasTravel) return { dot: 'bg-cyan-400', title: `Travel · ${trip.location}` }
-  return { dot: 'bg-slate-500', title: trip.notes ?? trip.location }
+  return { dot: 'bg-subtle', title: trip.notes ?? trip.location }
 }
 
 export function CalendarView({
@@ -103,13 +103,13 @@ export function CalendarView({
 
   if (!expanded) {
     return (
-      <div className="rounded-xl border border-slate-700 bg-slate-900/50 p-3">
+      <div className="rounded-xl border border-border bg-card p-3">
         <div className="mb-2">
-          <h3 className="text-sm font-semibold text-slate-100">Trip calendar</h3>
-          <p className="text-[10px] text-slate-500">{monthLabel}</p>
+          <h3 className="text-sm font-semibold text-fg">Trip calendar</h3>
+          <p className="text-[10px] text-subtle">{monthLabel}</p>
         </div>
 
-        <div className="grid grid-cols-7 gap-0.5 text-center text-[9px] font-medium text-slate-500">
+        <div className="grid grid-cols-7 gap-0.5 text-center text-[9px] font-medium text-subtle">
           {WEEKDAYS_SHORT.map((d, i) => (
             <div key={`${d}-${i}`} className="py-0.5">
               {d}
@@ -132,7 +132,7 @@ export function CalendarView({
                   return (
                     <div
                       key={cell.date}
-                      className="flex aspect-square min-w-0 items-center justify-center text-[10px] text-slate-600"
+                      className="flex aspect-square min-w-0 items-center justify-center text-[10px] text-subtle"
                     >
                       {cell.dayNum}
                     </div>
@@ -150,12 +150,12 @@ export function CalendarView({
                     className={`flex aspect-square min-w-0 flex-col items-center justify-center rounded-md border text-[10px] transition ${
                       selected
                         ? 'border-amber-500/70 bg-amber-500/20 text-amber-100'
-                        : 'border-slate-700 bg-slate-800/60 text-slate-300 hover:border-slate-500'
+                        : 'border-border bg-muted/60 text-fg-soft hover:border-strong'
                     }`}
                   >
                     <span className="font-semibold leading-none">{cell.dayNum}</span>
                     <span className={`mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} />
-                    <span className="mt-0.5 text-[8px] leading-none text-slate-500">D{trip.day}</span>
+                    <span className="mt-0.5 text-[8px] leading-none text-subtle">D{trip.day}</span>
                   </button>
                 )
               })}
@@ -163,7 +163,7 @@ export function CalendarView({
           ))}
         </div>
 
-        <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[9px] text-slate-500">
+        <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[9px] text-subtle">
           <span className="flex items-center gap-1">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> Game
           </span>
@@ -171,7 +171,7 @@ export function CalendarView({
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" /> Travel
           </span>
           <span className="flex items-center gap-1">
-            <span className="h-1.5 w-1.5 rounded-full bg-slate-500" /> Rest
+            <span className="h-1.5 w-1.5 rounded-full bg-subtle" /> Rest
           </span>
         </div>
       </div>
@@ -179,20 +179,20 @@ export function CalendarView({
   }
 
   return (
-    <div className="rounded-xl border border-slate-700 bg-slate-900/50 p-6">
+    <div className="rounded-xl border border-border bg-card p-6">
       <div className="mb-4 flex flex-wrap items-end justify-between gap-2">
         <div>
-          <h3 className="text-lg font-semibold text-slate-100">Trip calendar</h3>
-          <p className="text-sm text-slate-400">{monthLabel}</p>
+          <h3 className="text-lg font-semibold text-fg">Trip calendar</h3>
+          <p className="text-sm text-muted-fg">{monthLabel}</p>
         </div>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-subtle">
           Click a trip day to highlight it on the map · 🏀 game · ✈️/🚆 travel · temps are 6-yr historical avg
         </p>
       </div>
 
-      <div className="grid grid-cols-7 gap-2 text-center text-sm font-medium text-slate-500">
+      <div className="grid grid-cols-7 gap-2 text-center text-sm font-medium text-subtle">
         {WEEKDAYS.map((d) => (
-          <div key={d} className="rounded-md bg-slate-800/50 py-2">
+          <div key={d} className="rounded-md bg-muted/50 py-2">
             {d}
           </div>
         ))}
@@ -211,7 +211,7 @@ export function CalendarView({
                 return (
                   <div
                     key={cell.date}
-                    className="min-h-[120px] min-w-0 rounded-lg bg-slate-950/30 p-2 opacity-30"
+                    className="min-h-[120px] min-w-0 rounded-lg bg-bg/30 p-2 opacity-30"
                   />
                 )
               }
@@ -226,14 +226,14 @@ export function CalendarView({
                     selected
                       ? 'border-amber-500/70 bg-amber-500/15 ring-1 ring-amber-500/30'
                       : trip
-                        ? 'border-slate-700 bg-slate-800/50 hover:border-slate-500 hover:bg-slate-800/80'
-                        : 'border-transparent bg-slate-900/20'
+                        ? 'border-border bg-muted/50 hover:border-strong hover:bg-muted/80'
+                        : 'border-transparent bg-card/40'
                   } ${!trip ? 'cursor-default' : ''}`}
                 >
                   <div className="flex items-start justify-between gap-1">
-                    <span className="text-base font-bold text-slate-200">{cell.dayNum}</span>
+                    <span className="text-base font-bold text-fg">{cell.dayNum}</span>
                     {trip && (
-                      <span className="shrink-0 rounded bg-slate-700/80 px-1.5 py-0.5 text-xs text-slate-400">
+                      <span className="shrink-0 rounded bg-elevated/80 px-1.5 py-0.5 text-xs text-muted-fg">
                         D{trip.day}
                       </span>
                     )}
@@ -241,7 +241,7 @@ export function CalendarView({
 
                   {trip && (
                     <div className="mt-2 space-y-1 text-xs">
-                      <div className="truncate font-medium text-slate-300">{trip.location}</div>
+                      <div className="truncate font-medium text-fg-soft">{trip.location}</div>
                       <WeatherBadge
                         weather={getWeatherForDay(trip.location, trip.date)}
                         compact
@@ -253,15 +253,15 @@ export function CalendarView({
                           className={`rounded-md px-2 py-1 ${
                             trip.game!.marquee
                               ? 'bg-amber-500/20 text-amber-100'
-                              : 'bg-slate-700/60 text-slate-200'
+                              : 'bg-elevated/60 text-fg'
                           }`}
                         >
                           {trip.game!.marquee && '⭐ '}
                           <span className="break-words">{trip.game!.matchup}</span>
                           {trip.game!.timeLocal && (
-                            <span className="block text-slate-400">{trip.game!.timeLocal} local</span>
+                            <span className="block text-muted-fg">{trip.game!.timeLocal} local</span>
                           )}
-                          <span className="block text-slate-500">
+                          <span className="block text-subtle">
                             score {trip.game!.interestScore.toFixed(2)}
                           </span>
                         </div>
@@ -275,11 +275,11 @@ export function CalendarView({
                       )}
 
                       {!hasGame && !hasTravel && trip.notes && (
-                        <div className="italic text-slate-500">{trip.notes}</div>
+                        <div className="italic text-subtle">{trip.notes}</div>
                       )}
 
                       {!hasGame && !hasTravel && !trip.notes && (
-                        <div className="text-slate-500">Rest / explore</div>
+                        <div className="text-subtle">Rest / explore</div>
                       )}
                     </div>
                   )}

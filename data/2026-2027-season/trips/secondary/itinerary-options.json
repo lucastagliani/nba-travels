@@ -1,0 +1,11 @@
+{
+  "description": "Itinerary options for the secondary trip — not yet planned.",
+  "constraints": {
+    "maxDays": 12,
+    "sameDayTravelAndGame": true,
+    "focus": "Draft trip — city tiers defined, itineraries TBD"
+  },
+  "travelAssumptions": {},
+  "options": [],
+  "comparison": []
+}

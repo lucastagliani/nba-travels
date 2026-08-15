@@ -10,9 +10,8 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CITIES_PATH = ROOT / "data" / "2026-2027-season" / "cities.json"
-ITINERARIES_PATH = ROOT / "data" / "2026-2027-season" / "itinerary-options.json"
-OUTPUT_PATH = ROOT / "data" / "2026-2027-season" / "weather-normals.json"
+SEASON_DIR = ROOT / "data" / "2026-2027-season"
+DEFAULT_TRIP = "east-coast"
 
 HISTORY_YEARS = (2019, 2020, 2021, 2022, 2023, 2024)
 
@@ -91,13 +90,15 @@ def parse_month_day(iso: str) -> tuple[int, int, str]:
     return int(month), int(day), f"{month}-{day}"
 
 
-def collect_itinerary_scope() -> tuple[
+def collect_itinerary_scope(
+    itineraries_path: Path,
+) -> tuple[
     set[str],
     set[int],
     dict[str, dict[int, set[str]]],
 ]:
     """Cities, calendar months, and city → month → MM-DD keys used in itineraries."""
-    data = json.loads(ITINERARIES_PATH.read_text())
+    data = json.loads(itineraries_path.read_text())
     cities: set[str] = set()
     months: set[int] = set()
     by_city_month: dict[str, dict[int, set[str]]] = defaultdict(lambda: defaultdict(set))
@@ -120,8 +121,23 @@ def month_window(md_keys: set[str]) -> tuple[str, str]:
 
 
 def main() -> None:
-    cities_meta = json.loads(CITIES_PATH.read_text())
-    itinerary_cities, itinerary_months, by_city_month = collect_itinerary_scope()
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--trip",
+        default=DEFAULT_TRIP,
+        help="Trip id under season/trips/ (default: east-coast)",
+    )
+    args = parser.parse_args()
+
+    trip_dir = SEASON_DIR / "trips" / args.trip
+    cities_path = trip_dir / "cities.json"
+    itineraries_path = trip_dir / "itinerary-options.json"
+    output_path = trip_dir / "weather-normals.json"
+
+    cities_meta = json.loads(cities_path.read_text())
+    itinerary_cities, itinerary_months, by_city_month = collect_itinerary_scope(itineraries_path)
 
     # city → MM-DD → list of daily samples across history years
     samples: dict[str, dict[str, list[dict]]] = defaultdict(lambda: defaultdict(list))
@@ -209,6 +225,7 @@ def main() -> None:
     doc = {
         "description": "Historical climate normals (2019–2024 average) for itinerary cities and months only.",
         "source": "Open-Meteo Historical Weather API",
+        "tripId": args.trip,
         "units": {"temperature": "C", "precipitation": "mm"},
         "scope": {
             "cities": sorted(itinerary_cities),
@@ -218,9 +235,9 @@ def main() -> None:
         "entries": output_entries,
     }
 
-    OUTPUT_PATH.write_text(json.dumps(doc, indent=2) + "\n")
+    output_path.write_text(json.dumps(doc, indent=2) + "\n")
     total = sum(len(v) for v in output_entries.values())
-    print(f"Wrote {total} city×month-day records → {OUTPUT_PATH}", flush=True)
+    print(f"Wrote {total} city×month-day records → {output_path}", flush=True)
 
 
 if __name__ == "__main__":

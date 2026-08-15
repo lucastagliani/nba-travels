@@ -14,7 +14,7 @@ export function WeatherBadge({ weather, compact = false, className = '' }: Weath
 
   return (
     <span
-      className={`inline-flex items-center gap-1 text-slate-400 ${className}`}
+      className={`inline-flex items-center gap-1 text-muted-fg ${className}`}
       title={`Typical weather (${weather.sampleYears ?? 6}yr avg): ${formatWeatherDetail(weather)}`}
     >
       {text}

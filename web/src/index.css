@@ -1,5 +1,63 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-card: var(--c-card);
+  --color-muted: var(--c-muted);
+  --color-elevated: var(--c-elevated);
+  --color-input: var(--c-input);
+  --color-border: var(--c-border);
+  --color-strong: var(--c-strong);
+  --color-fg: var(--c-fg);
+  --color-fg-soft: var(--c-fg-soft);
+  --color-muted-fg: var(--c-muted-fg);
+  --color-subtle: var(--c-subtle);
+}
+
+:root {
+  color-scheme: light;
+  --c-bg: #f1f5f9;
+  --c-card: #ffffff;
+  --c-muted: #e2e8f0;
+  --c-elevated: #cbd5e1;
+  --c-input: #ffffff;
+  --c-border: #cbd5e1;
+  --c-strong: #94a3b8;
+  --c-fg: #0f172a;
+  --c-fg-soft: #334155;
+  --c-muted-fg: #64748b;
+  --c-subtle: #94a3b8;
+  --map-land: #e2e8f0;
+  --map-stroke: #94a3b8;
+  --map-city: #cbd5e1;
+  --map-label: #334155;
+  --map-ocean: transparent;
+  --theme-meta: #f1f5f9;
+}
+
+.dark {
+  color-scheme: dark;
+  --c-bg: #020617;
+  --c-card: rgb(15 23 42 / 0.5);
+  --c-muted: rgb(30 41 59 / 0.5);
+  --c-elevated: #334155;
+  --c-input: #0f172a;
+  --c-border: #334155;
+  --c-strong: #475569;
+  --c-fg: #f1f5f9;
+  --c-fg-soft: #cbd5e1;
+  --c-muted-fg: #94a3b8;
+  --c-subtle: #64748b;
+  --map-land: #1e293b;
+  --map-stroke: #334155;
+  --map-city: #334155;
+  --map-label: #e2e8f0;
+  --map-ocean: transparent;
+  --theme-meta: #020617;
+}
+
 html,
 body,
 #root {
@@ -8,6 +66,8 @@ body,
 
 body {
   margin: 0;
+  background-color: var(--c-bg);
+  color: var(--c-fg);
   -webkit-tap-highlight-color: transparent;
 }
 

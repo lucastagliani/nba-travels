@@ -11,7 +11,30 @@ Track improvements and new features for the 2026–27 trip planner.
 - [x] Team & city tier lists
 - [x] Game interest scoring (`scripts/score_games.py`)
 - [x] Five hand-picked 12-day itineraries
-- [x] Season data folder (`data/2026-2027-season/`)
+## Data layout
+
+```
+data/
+  budget-config.json              # global budget assumptions
+  2026-2027-season/               # season
+    season.json                   # season metadata + trip list
+    team-tiers.json               # shared across trips
+    scoring-config.json
+    nba-schedule-*.json
+    trips/
+      east-coast/                 # primary trip (active in web app)
+        trip.json
+        city-tiers.json
+        cities.json
+        itinerary-options.json
+        travel-routes.json
+        weather-normals.json
+      secondary/                  # draft alternate trip
+        trip.json
+        city-tiers.json
+        cities.json
+        itinerary-options.json    # empty — TBD
+```
 - [x] Interactive map UI (zoom, pan, fit route)
 - [x] Compare all itineraries screen
 - [x] Trip detail view (timeline, games list, travel stats)
@@ -59,7 +82,7 @@ Track improvements and new features for the 2026–27 trip planner.
 - [x] “Copy link” toast confirmation
 - [ ] Compare view: sort/filter columns, highlight best per metric
 - [ ] Map: show Porto Alegre as home marker (context only, off-US map inset?)
-- [ ] Dark/light theme toggle
+- [x] Dark/light theme toggle
 - [ ] i18n (EN / PT-BR) for UI labels
 
 ---
@@ -86,7 +109,8 @@ Track improvements and new features for the 2026–27 trip planner.
 ## Notes
 
 - Budget assumptions live in `data/budget-config.json` — tune there first.
-- City metadata: `data/2026-2027-season/cities.json`, routes: `travel-routes.json`.
-- Refresh weather normals: `python3 scripts/fetch_weather.py`
-- Tier preferences live in `data/team-tiers.json` and `data/city-tiers.json`.
-- Re-score after tier or scoring changes: `python3 scripts/score_games.py`
+- **Season** (`data/2026-2027-season/`): schedule, team tiers, scoring config.
+- **Trip** (`data/2026-2027-season/trips/<id>/`): city tiers, cities, itineraries, weather, routes.
+- Active trip in the web app: `@trip` → `trips/east-coast` (change alias to switch trips).
+- Refresh weather: `python3 scripts/fetch_weather.py --trip east-coast`
+- Re-score per trip: `python3 scripts/score_games.py --trip east-coast`

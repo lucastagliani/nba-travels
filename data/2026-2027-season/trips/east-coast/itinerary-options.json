@@ -723,7 +723,6 @@
     {
       "id": "stars-east-tour",
       "name": "Stars East Tour",
-      "recommended": true,
       "recommendedFor": "Maximum star power — 76ers and Lakers twice, plus Orlando",
       "startDate": "2027-02-24",
       "endDate": "2027-03-07",
@@ -874,7 +873,8 @@
     {
       "id": "capitol-to-coast",
       "name": "Capitol to Coast",
-      "recommendedFor": "Northeast corridor + DC, ending in Miami with Lakers",
+      "recommended": true,
+      "recommendedFor": "Few train legs, strong marquee games, March warmth building toward Miami — best balance for avoiding cold",
       "startDate": "2027-03-14",
       "endDate": "2027-03-25",
       "cities": ["Philadelphia", "Washington", "New York", "Miami"],
@@ -1067,8 +1067,7 @@
       "cities": ["NYC", "Orlando", "Miami", "Philly"],
       "games": 6,
       "averageScore": 3.76,
-      "marqueeGames": ["PHI@NYK", "LAL@PHI"],
-      "recommended": true
+      "marqueeGames": ["PHI@NYK", "LAL@PHI"]
     },
     {
       "id": "capitol-to-coast",
@@ -1076,7 +1075,8 @@
       "cities": ["Philly", "DC", "NYC", "Miami"],
       "games": 6,
       "averageScore": 3.76,
-      "marqueeGames": ["PHI@WAS", "LAL@MIA"]
+      "marqueeGames": ["PHI@WAS", "LAL@MIA"],
+      "recommended": true
     }
   ]
 }

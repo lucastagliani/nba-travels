@@ -1,0 +1,8 @@
+{
+  "id": "east-coast",
+  "seasonId": "2026-2027",
+  "name": "East Coast",
+  "description": "Primary 2026-27 trip — east coast cities, train/flight between hubs",
+  "focus": "East coast; deprioritize already-visited west cities (LA, Vegas, Sacramento, SF, Dallas)",
+  "default": true
+}

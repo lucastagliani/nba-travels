@@ -5,6 +5,7 @@ export type { GameEntry }
 
 interface GameListProps {
   days: Day[]
+  title?: string
   label?: string
   color?: string
   activeDay?: number | null
@@ -13,6 +14,7 @@ interface GameListProps {
 
 export function GameList({
   days,
+  title = 'Games',
   label,
   color,
   activeDay = null,
@@ -23,9 +25,9 @@ export function GameList({
 
   if (games.length === 0) {
     return (
-      <div className="rounded-lg border border-slate-700 bg-slate-900/50 p-4">
-        {label && <h3 className="mb-2 text-sm font-semibold text-slate-200">{label}</h3>}
-        <p className="text-sm text-slate-500">No games in this itinerary.</p>
+      <div className="rounded-lg border border-border bg-card p-4">
+        <h3 className="mb-2 text-sm font-semibold text-fg">{title}</h3>
+        <p className="text-sm text-subtle">No games in this itinerary.</p>
       </div>
     )
   }
@@ -35,27 +37,26 @@ export function GameList({
   const totalScore = coreGames.reduce((sum, g) => sum + g.game.interestScore, 0)
 
   return (
-    <div className="rounded-lg border border-slate-700 bg-slate-900/50 p-4">
-      {label && (
-        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            {color && (
-              <span className="inline-block h-2.5 w-5 rounded-sm" style={{ background: color }} />
-            )}
-            <h3 className="text-sm font-semibold text-slate-200">Games · {label}</h3>
-          </div>
-          <p className="text-xs text-slate-500">
-            {coreGames.length} games · total score{' '}
-            <span className="text-amber-300">{totalScore.toFixed(2)}</span>
-            {optionalCount > 0 && ` · ${optionalCount} optional`}
-          </p>
+    <div className="rounded-lg border border-border bg-card p-4">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          {color && (
+            <span className="inline-block h-2.5 w-5 rounded-sm" style={{ background: color }} />
+          )}
+          <h3 className="text-sm font-semibold text-fg">{title}</h3>
+          {label && <span className="text-xs text-subtle">· {label}</span>}
         </div>
-      )}
+        <p className="text-xs text-subtle">
+          {coreGames.length} games · total score{' '}
+          <span className="text-amber-300">{totalScore.toFixed(2)}</span>
+          {optionalCount > 0 && ` · ${optionalCount} optional`}
+        </p>
+      </div>
 
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs">
           <thead>
-            <tr className="border-b border-slate-700 text-slate-500">
+            <tr className="border-b border-border text-subtle">
               <th className="pb-2 pr-3 font-medium">Day</th>
               <th className="pb-2 pr-3 font-medium">Date</th>
               <th className="pb-2 pr-3 font-medium">Matchup</th>
@@ -78,7 +79,7 @@ export function GameList({
 
         {optionalGames.length > 0 && (
           <>
-            <p className="mb-2 mt-4 text-[11px] font-medium uppercase tracking-wide text-slate-500">
+            <p className="mb-2 mt-4 text-[11px] font-medium uppercase tracking-wide text-subtle">
               Optional
             </p>
             <table className="w-full text-left text-xs">
@@ -117,22 +118,22 @@ function GameRow({
 
   return (
     <tr
-      className={`border-b border-slate-800/80 ${
+      className={`border-b border-border/80 ${
         highlighted ? 'bg-amber-500/10' : optional ? 'opacity-70' : ''
-      } ${clickable ? 'cursor-pointer hover:bg-slate-800/60' : ''}`}
+      } ${clickable ? 'cursor-pointer hover:bg-muted/60' : ''}`}
       onClick={() => onSelect?.(highlighted ? null : day)}
     >
-      <td className="py-2.5 pr-3 text-slate-400">{day}</td>
-      <td className="py-2.5 pr-3 text-slate-300">
+      <td className="py-2.5 pr-3 text-muted-fg">{day}</td>
+      <td className="py-2.5 pr-3 text-fg-soft">
         {weekday} {date}
       </td>
-      <td className="py-2.5 pr-3 font-medium text-slate-100">
+      <td className="py-2.5 pr-3 font-medium text-fg">
         {game.marquee && <span className="mr-1">⭐</span>}
         {game.matchup}
-        {optional && <span className="ml-1.5 text-slate-500">(optional)</span>}
+        {optional && <span className="ml-1.5 text-subtle">(optional)</span>}
       </td>
-      <td className="py-2.5 pr-3 text-slate-300">{location}</td>
-      <td className="py-2.5 pr-3 text-slate-400">{game.timeLocal ?? '—'}</td>
+      <td className="py-2.5 pr-3 text-fg-soft">{location}</td>
+      <td className="py-2.5 pr-3 text-muted-fg">{game.timeLocal ?? '—'}</td>
       <td className="py-2.5 text-amber-300/90">{game.interestScore.toFixed(2)}</td>
     </tr>
   )

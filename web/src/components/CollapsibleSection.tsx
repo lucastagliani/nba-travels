@@ -16,17 +16,17 @@ export function CollapsibleSection({
   const [open, setOpen] = useState(defaultOpen)
 
   return (
-    <div className={`rounded-lg border border-slate-700 bg-slate-900/40 ${className}`}>
+    <div className={`rounded-lg border border-border bg-card/80 ${className}`}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex min-h-[44px] w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-slate-200"
+        className="flex min-h-[44px] w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-fg"
         aria-expanded={open}
       >
         {title}
-        <span className="text-slate-500">{open ? '−' : '+'}</span>
+        <span className="text-subtle">{open ? '−' : '+'}</span>
       </button>
-      {open && <div className="border-t border-slate-800 px-1 pb-1">{children}</div>}
+      {open && <div className="border-t border-border px-1 pb-1">{children}</div>}
     </div>
   )
 }

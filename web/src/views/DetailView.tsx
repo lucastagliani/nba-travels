@@ -38,7 +38,6 @@ export function DetailView({
   const [compareId, setCompareId] = useState(
     options.find((o) => o.id === 'opening-tip-off')?.id ?? options[1]?.id,
   )
-  const [sidebarTab, setSidebarTab] = useState<'timeline' | 'compact-calendar'>('timeline')
   const [toast, setToast] = useState<string | null>(null)
 
   const selected = useMemo(
@@ -119,7 +118,7 @@ export function DetailView({
           <button
             type="button"
             onClick={onBack}
-            className="text-sm text-slate-400 hover:text-slate-200"
+            className="text-sm text-muted-fg hover:text-fg"
           >
             ← All itineraries
           </button>
@@ -130,8 +129,8 @@ export function DetailView({
             onSelect={handleSelectId}
           />
 
-          <div className="rounded-lg border border-slate-700 bg-slate-800/30 p-3">
-            <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-200">
+          <div className="rounded-lg border border-border bg-muted/30 p-3">
+            <label className="flex cursor-pointer items-center gap-2 text-sm text-fg">
               <input
                 type="checkbox"
                 checked={compareEnabled}
@@ -139,7 +138,7 @@ export function DetailView({
                   setCompareEnabled(e.target.checked)
                   onActiveDay(null)
                 }}
-                className="rounded border-slate-600 bg-slate-900"
+                className="rounded border-strong bg-input"
               />
               Overlay compare route on map
             </label>
@@ -148,7 +147,7 @@ export function DetailView({
               <select
                 value={compareId}
                 onChange={(e) => setCompareId(e.target.value)}
-                className="mt-2 w-full rounded-md border border-slate-600 bg-slate-900 px-2 py-1.5 text-sm text-slate-200"
+                className="mt-2 w-full rounded-md border border-strong bg-input px-2 py-1.5 text-sm text-fg"
               >
                 {compareCandidates.map((option) => (
                   <option key={option.id} value={option.id}>
@@ -159,38 +158,12 @@ export function DetailView({
             )}
           </div>
 
-          <div className="flex rounded-lg border border-slate-700 p-0.5 text-xs">
-            <button
-              type="button"
-              onClick={() => setSidebarTab('timeline')}
-              className={`flex-1 rounded-md px-2 py-1.5 ${sidebarTab === 'timeline' ? 'bg-slate-700 text-slate-100' : 'text-slate-400'}`}
-            >
-              Timeline
-            </button>
-            <button
-              type="button"
-              onClick={() => setSidebarTab('compact-calendar')}
-              className={`flex-1 rounded-md px-2 py-1.5 ${sidebarTab === 'compact-calendar' ? 'bg-slate-700 text-slate-100' : 'text-slate-400'}`}
-            >
-              Mini cal
-            </button>
-          </div>
-
-          {sidebarTab === 'timeline' ? (
-            <DayTimeline
-              days={selected.days}
-              legs={primaryRoute.legs}
-              activeDay={activeDay}
-              onSelectDay={onActiveDay}
-            />
-          ) : (
-            <CalendarView
-              days={selected.days}
-              activeDay={activeDay}
-              onSelectDay={onActiveDay}
-              expanded={false}
-            />
-          )}
+          <CalendarView
+            days={selected.days}
+            activeDay={activeDay}
+            onSelectDay={onActiveDay}
+            expanded={false}
+          />
         </aside>
 
         <section className="flex flex-col gap-5">
@@ -201,25 +174,25 @@ export function DetailView({
               <button
                 type="button"
                 onClick={onBack}
-                className="mb-2 text-sm text-slate-400 hover:text-slate-200 lg:hidden"
+                className="mb-2 text-sm text-muted-fg hover:text-fg lg:hidden"
               >
                 ← All itineraries
               </button>
-              <h2 className="text-xl font-semibold text-slate-100">{selected.name}</h2>
-              <p className="mt-1 text-sm text-slate-400">{selected.recommendedFor}</p>
+              <h2 className="text-xl font-semibold text-fg">{selected.name}</h2>
+              <p className="mt-1 text-sm text-muted-fg">{selected.recommendedFor}</p>
             </div>
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={handleShare}
-                className="min-h-[44px] rounded-md border border-slate-600 bg-slate-800 px-4 py-2 text-xs text-slate-200 hover:bg-slate-700"
+                className="min-h-[44px] rounded-md border border-strong bg-muted px-4 py-2 text-xs text-fg hover:bg-elevated"
               >
                 Share
               </button>
               <button
                 type="button"
                 onClick={() => printItinerary(selected)}
-                className="hidden min-h-[44px] rounded-md border border-slate-600 bg-slate-800 px-4 py-2 text-xs text-slate-200 hover:bg-slate-700 md:inline-block"
+                className="hidden min-h-[44px] rounded-md border border-strong bg-muted px-4 py-2 text-xs text-fg hover:bg-elevated md:inline-block"
               >
                 Print / PDF
               </button>
@@ -227,7 +200,7 @@ export function DetailView({
           </div>
 
           {selected.conflictNote && (
-            <p className="rounded-md bg-slate-800 px-3 py-2 text-xs text-amber-200/90">
+            <p className="rounded-md bg-muted px-3 py-2 text-xs text-amber-200/90">
               {selected.conflictNote}
             </p>
           )}
@@ -250,73 +223,66 @@ export function DetailView({
             />
           </div>
 
-          <div className="order-1 lg:order-none">
-            <CalendarView
-              days={selected.days}
-              activeDay={activeDay}
-              onSelectDay={onActiveDay}
-              expanded
-            />
-          </div>
+          <CalendarView
+            days={selected.days}
+            activeDay={activeDay}
+            onSelectDay={onActiveDay}
+            expanded
+          />
 
-          <div className="order-2 lg:order-last">
-            <GameList
-              days={selected.days}
-              label={selected.name}
-              color={ROUTE_COLORS.primary}
-              activeDay={activeDay}
-              onSelectDay={onActiveDay}
-            />
-          </div>
-
-          <div className="order-3 min-h-[320px] md:min-h-[420px] lg:order-none">
+          <div className="min-h-[320px] md:min-h-[420px]">
             <USMap layers={mapLayers} />
           </div>
 
-          <div className="order-4 space-y-3 lg:order-none">
+          <RouteStats
+            route={primaryRoute}
+            label={selected.name}
+            color={ROUTE_COLORS.primary}
+            activeLegs={activeLegs}
+          />
+
+          {compareEnabled && compareOption && compareRoute && (
+            <RouteStats
+              route={compareRoute}
+              title="Transportation"
+              label={`${compareOption.name} (compare)`}
+              color={ROUTE_COLORS.compare}
+            />
+          )}
+
+          <GameList
+            days={selected.days}
+            label={selected.name}
+            color={ROUTE_COLORS.primary}
+            activeDay={activeDay}
+            onSelectDay={onActiveDay}
+          />
+
+          <DayTimeline
+            days={selected.days}
+            legs={primaryRoute.legs}
+            activeDay={activeDay}
+            onSelectDay={onActiveDay}
+          />
+
+          <div className="space-y-3">
             <div className="lg:hidden">
-              <CollapsibleSection title="Budget & route stats" defaultOpen={false}>
-                <div className="space-y-3 p-3">
+              <CollapsibleSection title="Budget" defaultOpen={false}>
+                <div className="p-3">
                   <BudgetBreakdown budget={analysis.budget} />
-                  <RouteStats
-                    route={primaryRoute}
-                    label={selected.name}
-                    color={ROUTE_COLORS.primary}
-                    activeLegs={activeLegs}
-                  />
-                  {compareEnabled && compareOption && compareRoute && (
-                    <RouteStats
-                      route={compareRoute}
-                      label={compareOption.name}
-                      color={ROUTE_COLORS.compare}
-                    />
-                  )}
                 </div>
               </CollapsibleSection>
             </div>
 
-            <div className="hidden lg:block lg:space-y-5">
+            <div className="hidden lg:block">
               <BudgetBreakdown budget={analysis.budget} />
-              <RouteStats
-                route={primaryRoute}
-                label={selected.name}
-                color={ROUTE_COLORS.primary}
-                activeLegs={activeLegs}
-              />
-              {compareEnabled && compareOption && compareRoute && (
-                <RouteStats
-                  route={compareRoute}
-                  label={compareOption.name}
-                  color={ROUTE_COLORS.compare}
-                />
-              )}
             </div>
           </div>
 
-          <div className="order-5 lg:hidden">
+          <div className="lg:hidden">
             <CollapsibleSection title="Map compare overlay" defaultOpen={false}>
               <div className="space-y-3 p-3">
-                <label className="flex cursor-pointer items-center gap-2 text-sm text-slate-200">
+                <label className="flex cursor-pointer items-center gap-2 text-sm text-fg">
                   <input
                     type="checkbox"
                     checked={compareEnabled}
@@ -324,7 +290,7 @@ export function DetailView({
                       setCompareEnabled(e.target.checked)
                       onActiveDay(null)
                     }}
-                    className="rounded border-slate-600 bg-slate-900"
+                    className="rounded border-strong bg-input"
                   />
                   Overlay compare route on map
                 </label>
@@ -332,7 +298,7 @@ export function DetailView({
                   <select
                     value={compareId}
                     onChange={(e) => setCompareId(e.target.value)}
-                    className="min-h-[44px] w-full rounded-md border border-slate-600 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+                    className="min-h-[44px] w-full rounded-md border border-strong bg-input px-3 py-2 text-sm text-fg"
                   >
                     {compareCandidates.map((option) => (
                       <option key={option.id} value={option.id}>
@@ -364,10 +330,10 @@ function StatCard({
   small?: boolean
 }) {
   return (
-    <div className="rounded-lg border border-slate-700 bg-slate-900/50 px-3 py-2">
-      <p className="text-[10px] uppercase tracking-wide text-slate-500">{label}</p>
+    <div className="rounded-lg border border-border bg-card px-3 py-2">
+      <p className="text-[10px] uppercase tracking-wide text-subtle">{label}</p>
       <p
-        className={`mt-0.5 font-medium ${accent ? 'text-amber-300' : 'text-slate-200'} ${small ? 'text-[11px]' : 'text-sm'}`}
+        className={`mt-0.5 font-medium ${accent ? 'text-amber-300' : 'text-fg'} ${small ? 'text-[11px]' : 'text-sm'}`}
       >
         {value}
       </p>

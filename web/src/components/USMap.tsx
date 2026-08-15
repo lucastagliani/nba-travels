@@ -10,7 +10,9 @@ import { getAllMappedCities, getCityCoords, projectCoord } from '../lib/cities'
 import { MODE_ICONS, TIER_COLORS, US_TOPOLOGY_URL, ZOOM_EXTENT } from '../lib/constants'
 import { cityDistanceMiles, formatMiles } from '../lib/distance'
 import { computeFitTransform } from '../lib/mapFit'
+import { readMapColors } from '../lib/theme'
 import type { MapRouteLayer, RouteLeg } from '../types'
+import { useTheme } from './ThemeProvider'
 
 interface USMapProps {
   layers: MapRouteLayer[]
@@ -81,6 +83,8 @@ function buildSegments(
 }
 
 export function USMap({ layers, autoFitRoute = true }: USMapProps) {
+  const { theme } = useTheme()
+  const mapColors = useMemo(() => readMapColors(), [theme])
   const svgRef = useRef<SVGSVGElement>(null)
   const zoomRef = useRef<ZoomBehavior<SVGSVGElement, unknown> | null>(null)
   const [states, setStates] = useState<FeatureCollection | null>(null)
@@ -205,12 +209,12 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
   }
 
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-xl border border-slate-700 bg-slate-900">
+    <div className="relative h-full w-full overflow-hidden rounded-xl border border-border bg-input">
       <div className="absolute right-3 top-3 z-10 flex flex-col gap-1.5">
         <button
           type="button"
           onClick={zoomIn}
-          className="flex h-11 w-11 items-center justify-center rounded-md border border-slate-600 bg-slate-950/90 text-lg text-slate-100 hover:bg-slate-800 md:h-8 md:w-8"
+          className="flex h-11 w-11 items-center justify-center rounded-md border border-strong bg-bg/90 text-lg text-fg hover:bg-muted md:h-8 md:w-8"
           aria-label="Zoom in"
         >
           +
@@ -218,7 +222,7 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
         <button
           type="button"
           onClick={zoomOut}
-          className="flex h-11 w-11 items-center justify-center rounded-md border border-slate-600 bg-slate-950/90 text-lg text-slate-100 hover:bg-slate-800 md:h-8 md:w-8"
+          className="flex h-11 w-11 items-center justify-center rounded-md border border-strong bg-bg/90 text-lg text-fg hover:bg-muted md:h-8 md:w-8"
           aria-label="Zoom out"
         >
           −
@@ -226,20 +230,20 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
         <button
           type="button"
           onClick={fitRoute}
-          className="min-h-[44px] rounded-md border border-slate-600 bg-slate-950/90 px-3 py-2 text-[11px] font-medium text-slate-300 hover:bg-slate-800 md:min-h-0 md:px-2 md:py-1 md:text-[10px]"
+          className="min-h-[44px] rounded-md border border-strong bg-bg/90 px-3 py-2 text-[11px] font-medium text-fg-soft hover:bg-muted md:min-h-0 md:px-2 md:py-1 md:text-[10px]"
         >
           Fit route
         </button>
         <button
           type="button"
           onClick={resetZoom}
-          className="min-h-[44px] rounded-md border border-slate-600 bg-slate-950/90 px-3 py-2 text-[11px] font-medium text-slate-300 hover:bg-slate-800 md:min-h-0 md:px-2 md:py-1 md:text-[10px]"
+          className="min-h-[44px] rounded-md border border-strong bg-bg/90 px-3 py-2 text-[11px] font-medium text-fg-soft hover:bg-muted md:min-h-0 md:px-2 md:py-1 md:text-[10px]"
         >
           Reset
         </button>
       </div>
 
-      <div className="absolute left-3 top-3 z-10 rounded-md bg-slate-950/80 px-2 py-1 text-[10px] text-slate-400">
+      <div className="absolute left-3 top-3 z-10 rounded-md bg-bg/80 px-2 py-1 text-[10px] text-muted-fg">
         Scroll to zoom · drag to pan · {Math.round(transform.k * 100)}%
       </div>
 
@@ -257,8 +261,8 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
                 <path
                   key={state.id as string}
                   d={pathGenerator(state as never) ?? undefined}
-                  fill="#1e293b"
-                  stroke="#334155"
+                  fill={mapColors.land}
+                  stroke={mapColors.stroke}
                   strokeWidth={0.75 / transform.k}
                 />
               ))}
@@ -271,7 +275,7 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
               cx={x}
               cy={y}
               r={3 / transform.k}
-              fill="#334155"
+              fill={mapColors.city}
               opacity={0.5}
             />
           ))}
@@ -332,7 +336,7 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
                           x={midX}
                           y={midY + 14 / transform.k}
                           textAnchor="middle"
-                          fill="#94a3b8"
+                          fill={mapColors.city}
                           fontSize={10 / transform.k}
                         >
                           {formatMiles(distanceMiles)}
@@ -388,7 +392,7 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
                         <text
                           y={radius + 14 / transform.k}
                           textAnchor="middle"
-                          fill="#e2e8f0"
+                          fill={mapColors.label}
                           fontSize={11 / transform.k}
                           fontWeight={600}
                         >
@@ -404,7 +408,7 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
         </g>
       </svg>
 
-      <div className="absolute bottom-3 left-3 flex flex-wrap gap-3 rounded-lg bg-slate-950/80 px-3 py-2 text-xs text-slate-300">
+      <div className="absolute bottom-3 left-3 flex flex-wrap gap-3 rounded-lg bg-bg/80 px-3 py-2 text-xs text-fg-soft">
         {layers.map((layer) => (
           <span key={layer.id} className="flex items-center gap-1.5">
             <span
@@ -414,7 +418,7 @@ export function USMap({ layers, autoFitRoute = true }: USMapProps) {
             {layer.label}
           </span>
         ))}
-        <span className="text-slate-600">|</span>
+        <span className="text-subtle">|</span>
         {Object.entries(TIER_COLORS).map(([tier, color]) => (
           <span key={tier} className="flex items-center gap-1.5">
             <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: color }} />

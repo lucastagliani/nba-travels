@@ -1,5 +1,5 @@
-import citiesData from '@season/cities.json'
-import cityTiersData from '@data/city-tiers.json'
+import citiesData from '@trip/cities.json'
+import cityTiersData from '@trip/city-tiers.json'
 import type { CityCoords, CityTier } from '../types'
 
 const cities = citiesData as Record<string, CityCoords>

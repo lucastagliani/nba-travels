@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import itineraryData from '@season/itinerary-options.json'
+import itineraryData from '@trip/itinerary-options.json'
 import { MobileBottomNav } from './components/MobileBottomNav'
+import { ThemeToggle } from './components/ThemeToggle'
 import { sortItinerariesByDate } from './lib/itineraryStats'
 import { readUrlState } from './lib/print'
 import type { ItineraryData } from './types'
@@ -63,9 +64,9 @@ export default function App() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-bg text-fg">
       <header
-        className="border-b border-slate-800 px-4 py-4 md:px-6 md:py-5"
+        className="border-b border-border px-4 py-4 md:px-6 md:py-5"
         style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}
       >
         <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-4">
@@ -73,27 +74,30 @@ export default function App() {
             <h1 className="text-xl font-bold tracking-tight md:text-2xl">
               NBA Travels — Route Planner
             </h1>
-            <p className="mt-1 text-sm text-slate-400">
+            <p className="mt-1 text-sm text-muted-fg">
               Compare itineraries · calendar · budget · printable export
             </p>
           </div>
 
-          <nav className="hidden rounded-lg border border-slate-700 p-0.5 text-sm md:flex">
-            <button
-              type="button"
-              onClick={goCompare}
-              className={`rounded-md px-3 py-1.5 ${view === 'compare' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-slate-200'}`}
-            >
-              Compare all
-            </button>
-            <button
-              type="button"
-              onClick={goDetail}
-              className={`rounded-md px-3 py-1.5 ${view === 'detail' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-slate-200'}`}
-            >
-              Trip detail
-            </button>
-          </nav>
+          <div className="flex flex-wrap items-center gap-2">
+            <ThemeToggle />
+            <nav className="hidden rounded-lg border border-border p-0.5 text-sm md:flex">
+              <button
+                type="button"
+                onClick={goCompare}
+                className={`rounded-md px-3 py-1.5 ${view === 'compare' ? 'bg-elevated text-fg' : 'text-muted-fg hover:text-fg'}`}
+              >
+                Compare all
+              </button>
+              <button
+                type="button"
+                onClick={goDetail}
+                className={`rounded-md px-3 py-1.5 ${view === 'detail' ? 'bg-elevated text-fg' : 'text-muted-fg hover:text-fg'}`}
+              >
+                Trip detail
+              </button>
+            </nav>
+          </div>
         </div>
       </header>
 

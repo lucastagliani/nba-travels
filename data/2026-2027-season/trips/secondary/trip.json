@@ -1,0 +1,9 @@
+{
+  "id": "secondary",
+  "seasonId": "2026-2027",
+  "name": "Secondary (draft)",
+  "description": "Placeholder for a future alternate trip — same team tiers as the season, city focus not defined yet",
+  "focus": null,
+  "default": false,
+  "status": "draft"
+}

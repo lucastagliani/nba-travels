@@ -18,7 +18,8 @@
     "resolveJsonModule": true,
     "paths": {
       "@data/*": ["../data/*"],
-      "@season/*": ["../data/2026-2027-season/*"]
+      "@season/*": ["../data/2026-2027-season/*"],
+      "@trip/*": ["../data/2026-2027-season/trips/east-coast/*"]
     },
 
     /* Linting */

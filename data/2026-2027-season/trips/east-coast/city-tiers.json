@@ -1,5 +1,5 @@
 {
-  "description": "City preference tiers for ranking trip destinations on the 2026-27 east coast focus.",
+  "description": "City preference tiers for the east-coast trip (2026-27 season).",
   "defaultTier": "C",
   "visitedCities": [
     {

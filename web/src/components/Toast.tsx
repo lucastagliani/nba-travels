@@ -17,7 +17,7 @@ export function Toast({ message, visible, onHide }: ToastProps) {
 
   return (
     <div
-      className="fixed bottom-20 left-1/2 z-50 -translate-x-1/2 rounded-full border border-slate-600 bg-slate-800 px-4 py-2.5 text-sm text-slate-100 shadow-lg md:bottom-6"
+      className="fixed bottom-20 left-1/2 z-50 -translate-x-1/2 rounded-full border border-strong bg-muted px-4 py-2.5 text-sm text-fg shadow-lg md:bottom-6"
       role="status"
     >
       {message}

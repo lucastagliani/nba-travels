@@ -11,6 +11,13 @@
     <link rel="apple-touch-icon" href="./favicon.svg" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <title>NBA Travels — Route Planner</title>
+    <script>
+      (function () {
+        var t = localStorage.getItem('nba-travels-theme');
+        var dark = t === 'light' ? false : t === 'dark' ? true : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', dark);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

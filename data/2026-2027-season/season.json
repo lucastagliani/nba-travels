@@ -1,5 +1,18 @@
 {
   "id": "2026-2027",
   "label": "2026-27",
-  "seasonYear": "2026-27"
+  "seasonYear": "2026-27",
+  "defaultTrip": "east-coast",
+  "trips": [
+    {
+      "id": "east-coast",
+      "name": "East Coast",
+      "description": "Primary trip — NYC, Philly, Miami, Orlando, DC, Boston"
+    },
+    {
+      "id": "secondary",
+      "name": "Secondary (draft)",
+      "description": "Alternate trip — city focus TBD (no city tiers yet)"
+    }
+  ]
 }
