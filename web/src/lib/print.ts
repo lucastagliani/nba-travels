@@ -16,14 +16,19 @@ export function buildShareUrl(optionId: string, day?: number | null, trip?: stri
 }
 
 export function readUrlState(): {
-  view: 'compare' | 'detail'
+  view: 'compare' | 'detail' | 'how-it-works'
   id: string | null
   day: number | null
   trip: string | null
 } {
   const params = new URLSearchParams(window.location.search)
   const viewParam = params.get('view')
-  const view = viewParam === 'detail' ? 'detail' : 'compare'
+  const view =
+    viewParam === 'detail'
+      ? 'detail'
+      : viewParam === 'how-it-works'
+        ? 'how-it-works'
+        : 'compare'
   const id = params.get('id')
   const dayRaw = params.get('day')
   const day = dayRaw ? Number(dayRaw) : null

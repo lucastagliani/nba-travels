@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Footer } from './components/Footer'
 import { MobileBottomNav } from './components/MobileBottomNav'
 import { ThemeToggle } from './components/ThemeToggle'
 import { sortItinerariesByDate } from './lib/itineraryStats'
@@ -13,8 +14,9 @@ import {
 } from './lib/tripData'
 import { CompareView } from './views/CompareView'
 import { DetailView } from './views/DetailView'
+import { HowItWorksView } from './views/HowItWorksView'
 
-type AppView = 'compare' | 'detail'
+type AppView = 'compare' | 'detail' | 'how-it-works'
 
 function syncUrl(view: AppView, tripId: TripId, id: string | null, day: number | null) {
   const url = new URL(window.location.href)
@@ -53,6 +55,7 @@ export default function App() {
     [trip],
   )
   const defaultId = useMemo(() => defaultOptionId(tripId), [tripId])
+  const showPlanner = view !== 'how-it-works'
 
   const selectedExists = useMemo(
     () => options.some((o) => o.id === selectedId),
@@ -94,8 +97,13 @@ export default function App() {
     setView('detail')
   }, [])
 
+  const goHowItWorks = useCallback(() => {
+    setView('how-it-works')
+    setActiveDay(null)
+  }, [])
+
   return (
-    <div className="min-h-screen bg-bg text-fg">
+    <div className="flex min-h-screen flex-col bg-bg text-fg">
       <header
         className="border-b border-border px-4 py-4 md:px-6 md:py-5"
         style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}
@@ -106,49 +114,72 @@ export default function App() {
               NBA Travels — Route Planner
             </h1>
             <p className="mt-1 text-sm text-muted-fg">
-              {trip.name} · compare itineraries · calendar · budget
+              {showPlanner
+                ? `${trip.name} · compare itineraries · calendar · budget`
+                : 'How the planner works'}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <label className="sr-only" htmlFor="trip-select">
-              Trip
-            </label>
-            <select
-              id="trip-select"
-              value={tripId}
-              onChange={(e) => changeTrip(e.target.value as TripId)}
-              className="min-h-[36px] rounded-md border border-border bg-muted px-3 py-1.5 text-xs text-fg"
-            >
-              {listTrips().map((t) => (
-                <option key={t.id} value={t.id}>
-                  {t.name}
-                </option>
-              ))}
-            </select>
+            {showPlanner && (
+              <>
+                <label className="sr-only" htmlFor="trip-select">
+                  Trip
+                </label>
+                <select
+                  id="trip-select"
+                  value={tripId}
+                  onChange={(e) => changeTrip(e.target.value as TripId)}
+                  className="min-h-[36px] rounded-md border border-border bg-muted px-3 py-1.5 text-xs text-fg"
+                >
+                  {listTrips().map((t) => (
+                    <option key={t.id} value={t.id}>
+                      {t.name}
+                    </option>
+                  ))}
+                </select>
+              </>
+            )}
             <ThemeToggle />
             <nav className="hidden rounded-lg border border-border p-0.5 text-sm md:flex">
+              {showPlanner && (
+                <>
+                  <button
+                    type="button"
+                    onClick={goCompare}
+                    className={`rounded-md px-3 py-1.5 ${view === 'compare' ? 'bg-elevated text-fg' : 'text-muted-fg hover:text-fg'}`}
+                  >
+                    Compare all
+                  </button>
+                  <button
+                    type="button"
+                    onClick={goDetail}
+                    className={`rounded-md px-3 py-1.5 ${view === 'detail' ? 'bg-elevated text-fg' : 'text-muted-fg hover:text-fg'}`}
+                  >
+                    Trip detail
+                  </button>
+                </>
+              )}
               <button
                 type="button"
-                onClick={goCompare}
-                className={`rounded-md px-3 py-1.5 ${view === 'compare' ? 'bg-elevated text-fg' : 'text-muted-fg hover:text-fg'}`}
+                onClick={goHowItWorks}
+                className={`rounded-md px-3 py-1.5 ${view === 'how-it-works' ? 'bg-elevated text-fg' : 'text-muted-fg hover:text-fg'}`}
               >
-                Compare all
-              </button>
-              <button
-                type="button"
-                onClick={goDetail}
-                className={`rounded-md px-3 py-1.5 ${view === 'detail' ? 'bg-elevated text-fg' : 'text-muted-fg hover:text-fg'}`}
-              >
-                Trip detail
+                How it works
               </button>
             </nav>
           </div>
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-4 py-4 pb-24 md:p-6 md:pb-6">
-        {view === 'compare' ? (
+      <main
+        className={`mx-auto w-full max-w-7xl flex-1 px-4 py-4 md:p-6 ${
+          showPlanner ? 'pb-4 md:pb-6' : 'pb-6'
+        }`}
+      >
+        {view === 'how-it-works' ? (
+          <HowItWorksView onBack={goCompare} />
+        ) : view === 'compare' ? (
           <CompareView options={options} onSelect={openDetail} />
         ) : (
           <DetailView
@@ -162,7 +193,11 @@ export default function App() {
         )}
       </main>
 
-      <MobileBottomNav view={view} onCompare={goCompare} onDetail={goDetail} />
+      <Footer onHowItWorks={goHowItWorks} compactBottom={!showPlanner} />
+
+      {showPlanner && (
+        <MobileBottomNav view={view} onCompare={goCompare} onDetail={goDetail} />
+      )}
     </div>
   )
 }
